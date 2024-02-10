@@ -14,7 +14,7 @@ export const WelcomePageContainer = styled.div`
   display: flex;
   align-items: center;
   flex-Direction: column;
-  padding:60px 20px;
+  padding:0px 20px 60px 20px;
   max-width: 1440px;
 `
 

@@ -1,8 +1,9 @@
 import { Logo } from "components/Logo/Logo";
-import { HeaderContainer, StyledNavigation } from "./Header.styled";
+import { BtnLogIn, BtnRegistration, HeaderContainer, HeaderNav, StyledNavigation, WrapperAuthorizationMenu } from "./Header.styled";
 import { useState } from "react";
 import LoginModal from "components/LoginModal/LoginModal";
 import RegistrationModal from "components/RegistrationModal/RegistrationModal";
+import sprite from '../../img/svg-file.svg';
 
 export default function Header() {
     const [LoginModalOpen, setLoginModalOpen] = useState(false);
@@ -25,22 +26,26 @@ export default function Header() {
         <HeaderContainer>
             <Logo />
             
-            <nav>
+            <HeaderNav>
                 <StyledNavigation to="/">Home</StyledNavigation>
                 <StyledNavigation to="/teachers">Teachers</StyledNavigation>
                 <StyledNavigation to="/favorites">Favorites</StyledNavigation>
-            </nav>
-            
-
-            <div>
-                <button onClick={openLoginModal}>Log in</button>
-                <button onClick={openRegisterModal}>Register</button>
-
-            </div>
+            </HeaderNav>
 
             {LoginModalOpen && <LoginModal onClose={closeModals} />}
             {RegisterModalOpen && <RegistrationModal onClose={closeModals} />}
 
+            
+
+            <WrapperAuthorizationMenu>                
+                <BtnLogIn onClick={openLoginModal}>
+                    <svg width={20} height={20}>
+                        <use href={`${sprite}#icon-log-in`} />
+                    </svg>
+                    <p>Log in</p>
+                </BtnLogIn>
+                <BtnRegistration onClick={openRegisterModal}>Registration</BtnRegistration>
+            </WrapperAuthorizationMenu>
         </HeaderContainer>
     );
   };
