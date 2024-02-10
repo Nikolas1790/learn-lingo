@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/learn-lingo/static/css/main.222e33d0.css",
-    "main.js": "/learn-lingo/static/js/main.cc15c8f1.js",
+    "main.js": "/learn-lingo/static/js/main.0417f3e9.js",
     "static/media/home-page-photo.jpg": "/learn-lingo/static/media/home-page-photo.aba63a1ddce0568a06a8.jpg",
+    "static/media/svg-file.svg": "/learn-lingo/static/media/svg-file.76203764bad6cd8d18450e7f25010513.svg",
     "index.html": "/learn-lingo/index.html",
     "main.222e33d0.css.map": "/learn-lingo/static/css/main.222e33d0.css.map",
-    "main.cc15c8f1.js.map": "/learn-lingo/static/js/main.cc15c8f1.js.map"
+    "main.0417f3e9.js.map": "/learn-lingo/static/js/main.0417f3e9.js.map"
   },
   "entrypoints": [
     "static/css/main.222e33d0.css",
-    "static/js/main.cc15c8f1.js"
+    "static/js/main.0417f3e9.js"
   ]
 }
