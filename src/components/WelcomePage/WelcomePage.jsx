@@ -1,6 +1,5 @@
-import { NavLink } from "react-router-dom";
 import photoGreeting from "../../img/home-page-photo.jpg"
-import { ChildImg, ContainerBenefits, ContainerGreeting, ContainerMainInf, DataFigures, IndividualContainerBenefits, MotivationalText, SmallTitleFirstTwo, SmallTitleSecondTwo, Title, TitleLenguage, WelcomePageContainer, WraperBox } from "./WelcomePage.styled";
+import { BtnGetStarted, ChildImg, ContainerBenefits, ContainerGreeting, ContainerMainInf, DataFigures, IndividualContainerBenefits, MotivationalText, SmallTitleFirstTwo, SmallTitleSecondTwo, Title, TitleLenguage, WelcomePageContainer, WraperBox } from "./WelcomePage.styled";
   
   export default function WelcomePage() {
     return (   
@@ -10,7 +9,7 @@ import { ChildImg, ContainerBenefits, ContainerGreeting, ContainerMainInf, DataF
             <ContainerMainInf>
               <Title>Unlock your potential with the best <TitleLenguage>language</TitleLenguage>  tutors</Title>
               <MotivationalText>Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.</MotivationalText>
-              <NavLink to="/teachers" title="Let's start !">Get started</NavLink>
+              <BtnGetStarted to="/teachers" title="Let's start !">Get started</BtnGetStarted>
             </ContainerMainInf>
             <div>
               <ChildImg src={photoGreeting} alt="mainChild"  />

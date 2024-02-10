@@ -1,4 +1,5 @@
 import color from 'common/GlobalColers'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const WraperBox = styled.div`
@@ -72,12 +73,27 @@ export const MotivationalText = styled.p`
  max-width: 471px;
   font-size: 16px;
   line-height: 1.38;
-  /* letter-spacing: -2px; */
   margin-bottom: 64px;
+
+`
+export const BtnGetStarted = styled(NavLink)`
+display: inline-block;
+padding: 16px 88px;
+font-weight: 700;
+font-size: 18px;
+background: ${color.darkGgeen};
+border-radius: 12px;
+
+transition: background 0.25s linear;
+&:hover,
+&:focus {    
+  background: ${color.lightGreene}; 
+}
 `
 
 ////////////  /\ ContainerMainInf  //////////////////////////////////
 export const ChildImg = styled.img`
+border-radius: 30px;
   /* max-width: 568px; */
   /* max-width: 100%;
   height: auto; */
