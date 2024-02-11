@@ -6,8 +6,8 @@ import RegistrationModal from "components/RegistrationModal/RegistrationModal";
 import sprite from '../../img/svg-file.svg';
 
 export default function Header() {
-    const [LoginModalOpen, setLoginModalOpen] = useState(false);
-    const [RegisterModalOpen, setRegisterModalOpen] = useState(false);
+    const [loginModalOpen, setLoginModalOpen] = useState(false);
+    const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
     const openLoginModal = () => {
         setLoginModalOpen(true);
@@ -19,6 +19,7 @@ export default function Header() {
         setLoginModalOpen(false); // Закрываем окно логина, если открыто
     };
     const closeModals = () => {
+        // console.log('Closing modals');
         setLoginModalOpen(false);
         setRegisterModalOpen(false);
     };
@@ -32,8 +33,8 @@ export default function Header() {
                 <StyledNavigation to="/favorites">Favorites</StyledNavigation>
             </HeaderNav>
 
-            {LoginModalOpen && <LoginModal onClose={closeModals} />}
-            {RegisterModalOpen && <RegistrationModal onClose={closeModals} />}
+            {loginModalOpen && <LoginModal closeModals={closeModals} />}
+            {registerModalOpen && <RegistrationModal onClose={closeModals} />}
 
             
 

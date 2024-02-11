@@ -1,11 +1,31 @@
-import { Modal, WrapperLoginModal } from "./LoginModal.styled";
+import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperLoginModal } from "./LoginModal.styled";
+import sprite from '../../img/svg-file.svg';
+import LoginForm from "components/LoinForm/LoginForm";
 
-export default function LoginModal() {
+export default function LoginModal({closeModals}) {
+
+  const handleLogin = (values) => {
+    // Реализуйте логику для отправки данных на сервер или другую необходимую обработку
+    console.log(values);
+    closeModals();
+  };
+  
     return (
       <Modal>
         <WrapperLoginModal>
-          <h2>Log In</h2>
-          <p>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</p>
+          <BtnClose onClick={closeModals}>
+            <svg width={32} height={32}  >
+              <use href={`${sprite}#icon-x`} />
+            </svg>
+          </BtnClose>
+
+          <LoginModalTitle>Log In</LoginModalTitle>
+          <LoginModalText>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</LoginModalText>
+
+
+<LoginForm onSubmit={handleLogin}/>
+
+          
         </WrapperLoginModal>
       </Modal>
     );
