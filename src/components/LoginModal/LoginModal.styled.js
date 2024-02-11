@@ -1,7 +1,6 @@
 import color from 'common/GlobalColers';
 import styled from 'styled-components';
 
-
 export const Modal = styled.div`
   display: block;
   position: fixed;
@@ -11,8 +10,7 @@ export const Modal = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
- /* background-color: ${(props) => props.backgroundColor || 'rgba(0, 0, 0, 0.7)'}; */
-  /* transform: scale(0); */
+
   display: flex;
    z-index:5;
    background: rgba(25, 26, 21, 0.6);
@@ -31,8 +29,9 @@ export const WrapperLoginModal = styled.div`
   z-index: 2;
   transform: translate(-50%, -50%);
 
-  width: 566px;
-  height: 506px; 
+  max-width: 566px;
+  /* width: 566px; */
+  min-height: 506px; 
 
   background-color: ${color.whitePrimary};
   border-radius: 30px;
@@ -52,11 +51,7 @@ export const BtnClose = styled.button`
   stroke: ${color.blackPrimary};
   background: transparent;
  
-  /* transition: transform 0.3s ease; */
-  /* &:hover {
-    transform: scale(1.3);
-    cursor: pointer;
-  } */
+
 `;
 
 /////////////////////////////////////////////////////
@@ -64,7 +59,7 @@ export const BtnClose = styled.button`
 export const LoginModalTitle = styled.h2`
   font-weight: 500;
   font-size: 40px;
-
+line-height: 1.2;
   margin-bottom: 20px;
   /* letter-spacing: 1.4; */
 `;
@@ -74,7 +69,5 @@ export const LoginModalText = styled.p`
 
   margin-bottom: 40px;
   color: rgba(18, 20, 23, 0.8);
-  letter-spacing: 1.4;
-
-  
+  letter-spacing: 1.4;  
 `;

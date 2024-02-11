@@ -1,75 +1,87 @@
-import {  Formik, Field, Form } from 'formik';
-// import * as Yup from 'yup';
+import {  Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { EyeSvg, FormBtn, FormFieldEmail, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginForm.styled';
+import { useState } from 'react';
+import sprite from '../../img/svg-file.svg';
 
-// const initialValues = {
-//     email: '',
-//     password: '',
-// };
+
+const initialValues = {
+  email: '',
+  password: '',
+};
   
-// const validationSchema = Yup.object({
-//     email: Yup.string()
-//     .email('Invalid email address')
-//     .required('Required'),
-//     password: Yup.string()
-//     .required('Required')
-//     .min(8, "Password must be at least 8 characters"),
-// });
+const schema = Yup.object({
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string().required('Required').min(6, "Password must be at least 6 characters"),
+});
 
 export default function LoginForm({ onSubmit }) {
-    // const formik = useFormik({
-    //   initialValues,
-    //   validationSchema,
-    //   onSubmit,
-    // });
-  
-    return (
-        <div className="App">
-        <Formik
-           validationSchema
-          initialValues
-          onSubmit={async (values) => {
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            alert(JSON.stringify(values, null, 2));
-          }}
-        >
-          <Form>
-            <Field id="email" name="email" type="text" placeholder="Email"/>
-            <Field id="password" name="password" type="email" placeholder="Password" />
-            <button type="submit">Log In</button>
-          </Form>
-        </Formik>
-      </div>
 
-    //   <form onSubmit={formik.handleSubmit}>
-    //     <input
-    //       type="text"
-    //       id="email"
-    //       name="email"
-    //       onChange={formik.handleChange}
-    //       onBlur={formik.handleBlur}
-    //       value={formik.values.email}
-    //     />
-    //     {formik.touched.email && formik.errors.email ? (
-    //       <div>{formik.errors.email}</div>
-    //     ) : null}
-  
-        
-    //     <input
-    //       type="password"
-    //       id="password"
-    //       name="password"
-    //       onChange={formik.handleChange}
-    //       onBlur={formik.handleBlur}
-    //       value={formik.values.password}
-    //     />
-    //     {formik.touched.password && formik.errors.password ? (
-    //       <div>{formik.errors.password}</div>
-    //     ) : null}
-  
-    //     <button type="submit">Submit</button>
-    //   </form>
+  const [showPassword, setShowPassword] = useState(false);
 
-      
-    );
+  const togglePasswordVisibility = () => {
+    if (showPassword === false) {
+      setShowPassword(true);
+    }
+    if (showPassword === true) {
+      setShowPassword(false);
+    }
   };
+  
+  const handleSubmit = async (values, {resetForm}) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    resetForm();
+    alert(JSON.stringify(values, null, 2));
+  }
+  
+  return (
+    <div className="App">
+      <Formik  initialValues = {initialValues} validationSchema={schema} onSubmit={handleSubmit} >
+
+        {({ errors, touched }) => (
+          <Form>
+            <FormFields>
+              
+
+                <FormFieldEmail name="email" type="email" placeholder="Email" style={{
+                            borderColor:
+                            errors.email && touched.password ? "red" : null,
+                        }} />
+                {/* <ErrorMessage name="email" component='div' /> */}
+              <FormFieldPassvordConteiner>
+                <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
+                          borderColor:
+                            errors.password && touched.password ? "red" : null,
+                        }} />
+
+                  {showPassword ? (
+                        <EyeSvg
+                          width={20}
+                          height={20}
+                          onClick={togglePasswordVisibility}
+                        >
+                          <use href={`${sprite}#icon-eye`} />
+                        </EyeSvg>
+                      ) : (
+                        <EyeSvg
+                          width={20}
+                          height={20}
+                          onClick={togglePasswordVisibility}
+                        >
+                          <use href={`${sprite}#icon-eye-off`} />
+                        </EyeSvg>
+                      )}
+                {/* <ErrorMessage name="password" component='div' /> */}
+              </FormFieldPassvordConteiner>
+
+            <FormBtn type="submit">Log In</FormBtn>
+
+            </FormFields>
+          </Form>
+        )}
+      </Formik>
+    </div>
+
+  );
+};
   
