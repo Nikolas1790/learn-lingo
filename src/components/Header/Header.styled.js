@@ -14,7 +14,7 @@ export const HeaderContainer = styled.div`
 export const HeaderNav = styled.nav`
     @media (min-width: 412px) {
     margin-left: 120px;
-  }
+  };
 
 `
 
