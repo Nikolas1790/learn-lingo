@@ -1,5 +1,4 @@
 import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
-// import LoginForm from "components/LoinForm/LoginForm";
 import sprite from '../../img/svg-file.svg';
 import RegistrationForm from "./RegistrationForm";
 

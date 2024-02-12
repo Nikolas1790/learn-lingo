@@ -1,8 +1,8 @@
+import TeachersPage from "components/TechersPage/TeachersPage";
+
 export default function Teachers() {
     return (
-      <>
-       TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-      </>
+      <TeachersPage />
     );
   }
   

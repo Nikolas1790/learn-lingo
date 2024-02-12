@@ -6,6 +6,7 @@ const color = {
   whiteDarker: 'rgb(248, 248, 248)',
   gryeTextColor: 'rgba(18, 20, 23, 0.7)',
 
+
 };
   
 export default color;
