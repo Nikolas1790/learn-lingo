@@ -1,5 +1,5 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
-import { TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
+import { BtnLoadMore, TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
 
   export default function TeachersPage() {
     return (   
@@ -7,6 +7,8 @@ import { TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
         <TeachersPageContainer>
             
             <FilterMenu />
+
+            <BtnLoadMore>Load more</BtnLoadMore>
 
         </TeachersPageContainer> 
       </WraperBox>  

@@ -1,4 +1,3 @@
-
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
@@ -6,9 +5,7 @@ export const WraperBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction:column;
-  
-  /* background-size: cover;
-  min-height: 640px; */
+ 
 `
 
 export const TeachersPageContainer = styled.div`
@@ -16,6 +13,24 @@ export const TeachersPageContainer = styled.div`
   align-items: start;
   flex-Direction: column;
   padding:64px 128px 96px 128px;
-  max-width: 1440px;
+  width: 1440px;
   background: ${color.whiteDarker};;
+`
+
+export const BtnLoadMore = styled.button`
+  font-weight: 700;
+  font-size: 18px;
+
+  width: 183px;
+  height: 60px;
+  background: ${color.darkGgeen};
+  border-radius: 12px; 
+  margin: 0 auto;
+
+  transition: background 0.25s linear;
+  &:hover,
+  &:focus {    
+  background: ${color.lightGreene}; 
+}
+
 `

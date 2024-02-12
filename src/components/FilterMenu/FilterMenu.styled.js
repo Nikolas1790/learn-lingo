@@ -3,10 +3,8 @@ import styled from 'styled-components'
 export const WraperMenu = styled.div`
   display: flex;
   gap: 20px;
-  /* align-items: center; */
-  /* flex-direction:column; */
-  /* background-size: cover;
-  min-height: 640px; */
+  margin-bottom: 32px;
+
 `
 
 export const TitleMenu = styled.p`
@@ -17,10 +15,7 @@ export const TitleMenu = styled.p`
 
 export const OptLanguages = styled.li`
   font-weight: 500;
-  /* width: 600px; */
-  /* height: 300px; */
-  
-  /* color: rgb(138, 138, 137); */
+
 `
 
 export const Dropdown = styled.div`
@@ -32,7 +27,6 @@ display: flex;
 
 font-weight: 500;
 font-size: 18px;
-  width: 221px;
   height: 48px;
   border-radius: 14px; 
   border: none;
@@ -41,8 +35,9 @@ font-size: 18px;
 
   background-color: #fff;
   padding: 10px;
-  border: 1px solid red;
-  cursor: pointer;
+  /* border: 1px solid red; */
+
+  width: ${props => props.width || '221px'};
 `;
 
 export const DropdownList = styled.ul`
@@ -56,6 +51,9 @@ export const DropdownList = styled.ul`
   border: 1px solid #ccc;
   border-top: none;
   display: none;
+
+  width: 100%;
+  border-radius: 0 0 12px 12px;
 
   ${Dropdown}:hover & {
     display: block;
