@@ -26,7 +26,7 @@ export default function FilterMenu() {
                 <Dropdown>
                     <DropdownButton>A1 Beginner</DropdownButton>
                     <DropdownList>
-                        {languages.map((language, index) => (
+                        {levels.map((language, index) => (
                             <DropdownItem key={index} value={language}>
                                 {language}
                             </DropdownItem>
@@ -40,7 +40,7 @@ export default function FilterMenu() {
                 <Dropdown>
                     <DropdownButton>30 $</DropdownButton>
                     <DropdownList>
-                        {languages.map((language, index) => (
+                        {prices.map((language, index) => (
                             <DropdownItem key={index} value={language}>
                                 {language}
                             </DropdownItem>
