@@ -8,7 +8,7 @@ export const FormFields = styled.div`
 
 `;
 
-export const FormFieldEmail = styled(Field)`
+export const FormField = styled(Field)`
   width: 100%;
   height: 50px;
   border: 1px solid	rgba(18, 20, 23, 0.1);

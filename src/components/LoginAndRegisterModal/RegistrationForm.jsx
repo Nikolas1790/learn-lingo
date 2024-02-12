@@ -1,6 +1,6 @@
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { EyeSvg, FormBtn, FormFieldEmail, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginAndRegisterStyled/Form.styled';
+import { EyeSvg, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { useState } from 'react';
 import sprite from '../../img/svg-file.svg';
 
@@ -44,12 +44,12 @@ export default function RegistrationForm({ onSubmit }) {
           <Form>
             <FormFields>              
 
-                <FormFieldEmail name="name" type="name" placeholder="Name" style={{
+                <FormField name="name" type="name" placeholder="Name" style={{
                     borderColor:
                         errors.email && touched.password ? "red" : null,
                     }} 
                 />
-                <FormFieldEmail name="email" type="email" placeholder="Email" style={{
+                <FormField name="email" type="email" placeholder="Email" style={{
                     borderColor:
                         errors.email && touched.password ? "red" : null,
                     }} 

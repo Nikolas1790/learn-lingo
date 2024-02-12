@@ -22,7 +22,7 @@ export const Modal = styled.div`
   } */
 `;
 
-export const WrapperLoginModal = styled.div`
+export const WrapperModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
