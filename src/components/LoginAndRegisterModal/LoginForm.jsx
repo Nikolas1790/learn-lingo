@@ -46,11 +46,11 @@ export default function LoginForm({ onSubmit }) {
 
                 <FormField name="email" type="email" placeholder="Email" style={{
                             borderColor:
-                            errors.email && touched.password ? "red" : null,
+                            errors.email && touched.email ? "red" : null,
                         }} />
                 <ErrorMessageStyled name="email" component='div' />
-              <FormFieldPassvordConteiner>
-                <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
+                <FormFieldPassvordConteiner>
+                  <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
                           borderColor:
                             errors.password && touched.password ? "red" : null,
                         }} />
@@ -72,8 +72,8 @@ export default function LoginForm({ onSubmit }) {
                           <use href={`${sprite}#icon-eye-off`} />
                         </EyeSvg>
                       )}
-                <ErrorMessagePassword name="password" component='div' />
-              </FormFieldPassvordConteiner>
+                  <ErrorMessagePassword name="password" component='div' />
+                </FormFieldPassvordConteiner>
 
               <FormBtn type="submit">Log In</FormBtn>
 

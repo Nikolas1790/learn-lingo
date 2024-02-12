@@ -47,7 +47,7 @@ export default function RegistrationForm({ onSubmit }) {
 
                 <FormField name="name" type="name" placeholder="Name" style={{
                     borderColor:
-                        errors.email && touched.name ? "red" : null,
+                        errors.name && touched.name ? "red" : null,
                     }} 
                 />
                 <ErrorMessageStyled name="name" component='div' />
