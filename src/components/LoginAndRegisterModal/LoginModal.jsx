@@ -1,6 +1,6 @@
-import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperLoginModal } from "./LoginModal.styled";
+import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperLoginModal } from "./LoginAndRegisterStyled/Modal.styled";
 import sprite from '../../img/svg-file.svg';
-import LoginForm from "components/LoinForm/LoginForm";
+import LoginForm from "./LoginForm";
 
 export default function LoginModal({closeModals}) {
 

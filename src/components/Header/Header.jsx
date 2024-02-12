@@ -1,8 +1,8 @@
 import { Logo } from "components/Logo/Logo";
 import { BtnLogIn, BtnRegistration, HeaderContainer, HeaderNav, StyledNavigation, WrapperAuthorizationMenu } from "./Header.styled";
 import { useState } from "react";
-import LoginModal from "components/LoginModal/LoginModal";
-import RegistrationModal from "components/RegistrationModal/RegistrationModal";
+import LoginModal from "components/LoginAndRegisterModal/LoginModal";
+import RegistrationModal from "components/LoginAndRegisterModal/RegistrationModal";
 import sprite from '../../img/svg-file.svg';
 
 export default function Header() {
@@ -34,7 +34,7 @@ export default function Header() {
             </HeaderNav>
 
             {loginModalOpen && <LoginModal closeModals={closeModals} />}
-            {registerModalOpen && <RegistrationModal onClose={closeModals} />}
+            {registerModalOpen && <RegistrationModal closeModals={closeModals} />}
 
             
 
