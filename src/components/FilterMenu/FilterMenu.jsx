@@ -10,22 +10,16 @@ export default function FilterMenu() {
     const [selectedLevels, setSelectedLevels] = useState(levels[0]);
     const [selectedPrices, setSelectedPrices] = useState(prices[0]);
 
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const handleMenuChange = (value, setValue) => {
         setValue(value);
-        setIsMenuOpen(false);
     };
-
 
     return (   
         <WraperMenu>
             <div>
                 <TitleMenu>Languages</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="221px" onClick={() => setIsMenuOpen(!isMenuOpen)}>{selectedLanguage}</DropdownButton>
-                    {isMenuOpen && (
+                    <DropdownButton width="221px" >{selectedLanguage}</DropdownButton>
                     <DropdownList>
                         {languages.map((language, index) => (
                             <DropdownItem key={index} value={language} onClick={() => handleMenuChange(language, setSelectedLanguage)}>
@@ -33,15 +27,15 @@ export default function FilterMenu() {
                             </DropdownItem>
                         ))}
                     </DropdownList>
-                    )}
+                   
                 </Dropdown>
             </div>
 
             <div>
                 <TitleMenu>Level of knowledge</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="198px" onClick={() => setIsMenuOpen(!isMenuOpen)}>{selectedLevels}</DropdownButton>
-                    {isMenuOpen && (
+                    <DropdownButton width="198px" >{selectedLevels}</DropdownButton>
+                    
                     <DropdownList>
                         {levels.map((level, index) => (
                             <DropdownItem key={index} value={level} onClick={() => handleMenuChange(level, setSelectedLevels)}>
@@ -49,15 +43,15 @@ export default function FilterMenu() {
                             </DropdownItem>
                         ))}
                     </DropdownList>
-                    )}
+                    
                 </Dropdown>
             </div>
 
             <div>
                 <TitleMenu>Price</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="124px" onClick={() => setIsMenuOpen(!isMenuOpen)}>{selectedPrices}</DropdownButton>
-                    {isMenuOpen && (
+                    <DropdownButton width="124px" >{selectedPrices}</DropdownButton>
+                    
                     <DropdownList>
                         {prices.map((price, index) => (
                             <DropdownItem key={index} value={price} onClick={() => handleMenuChange(price, setSelectedPrices)}>
@@ -65,7 +59,7 @@ export default function FilterMenu() {
                             </DropdownItem>
                         ))}
                     </DropdownList>
-                    )}
+                    
                 </Dropdown>
             </div>
         </WraperMenu>     

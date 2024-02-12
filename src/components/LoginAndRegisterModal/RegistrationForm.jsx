@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { EyeSvg, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { useState } from 'react';
 import sprite from '../../img/svg-file.svg';
+import { ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
 
 
 const initialValues = {
@@ -12,7 +13,7 @@ const initialValues = {
 };
   
 const schema = Yup.object({
-  name: Yup.string().required('Required').min(2, ""),
+  name: Yup.string().required('Required').min(2, "The name must have at least 2 letters"),
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string().required('Required').min(6, "Password must be at least 6 characters"),
 });
@@ -46,15 +47,17 @@ export default function RegistrationForm({ onSubmit }) {
 
                 <FormField name="name" type="name" placeholder="Name" style={{
                     borderColor:
-                        errors.email && touched.password ? "red" : null,
+                        errors.email && touched.name ? "red" : null,
                     }} 
                 />
+                <ErrorMessageStyled name="name" component='div' />
+
                 <FormField name="email" type="email" placeholder="Email" style={{
                     borderColor:
-                        errors.email && touched.password ? "red" : null,
+                        errors.email && touched.email ? "red" : null,
                     }} 
                 />
-                {/* <ErrorMessage name="email" component='div' /> */}
+                <ErrorMessageStyled name="email" component='div' />
                 <FormFieldPassvordConteiner>
                     <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
                         borderColor:
@@ -78,7 +81,7 @@ export default function RegistrationForm({ onSubmit }) {
                           <use href={`${sprite}#icon-eye-off`} />
                         </EyeSvg>
                       )}
-                {/* <ErrorMessage name="password" component='div' /> */}
+                <ErrorMessagePassword name="password" component='div' />
                 </FormFieldPassvordConteiner>
 
                 <FormBtn type="submit">Sign Up</FormBtn>

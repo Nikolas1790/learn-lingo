@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { EyeSvg, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { useState } from 'react';
 import sprite from '../../img/svg-file.svg';
+import { ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
 
 
 const initialValues = {
@@ -47,7 +48,7 @@ export default function LoginForm({ onSubmit }) {
                             borderColor:
                             errors.email && touched.password ? "red" : null,
                         }} />
-                {/* <ErrorMessage name="email" component='div' /> */}
+                <ErrorMessageStyled name="email" component='div' />
               <FormFieldPassvordConteiner>
                 <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
                           borderColor:
@@ -71,10 +72,10 @@ export default function LoginForm({ onSubmit }) {
                           <use href={`${sprite}#icon-eye-off`} />
                         </EyeSvg>
                       )}
-                {/* <ErrorMessage name="password" component='div' /> */}
+                <ErrorMessagePassword name="password" component='div' />
               </FormFieldPassvordConteiner>
 
-            <FormBtn type="submit">Log In</FormBtn>
+              <FormBtn type="submit">Log In</FormBtn>
 
             </FormFields>
           </Form>
