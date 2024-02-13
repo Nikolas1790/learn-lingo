@@ -5,6 +5,10 @@ const color = {
   whitePrimary: '#FFFFFF',
   whiteDarker: 'rgb(248, 248, 248)',
   gryeTextColor: 'rgba(18, 20, 23, 0.7)',
+  
+  subtitleColor: 'rgb(138, 138, 137)',
+  
+  BrightGreen: 'rgb(56, 205, 62)',
 
 
 };
