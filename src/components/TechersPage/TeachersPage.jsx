@@ -123,11 +123,11 @@ const a = [
         <TeachersPageContainer>
             
             <FilterMenu />
-
-            {a.map((teacher, index) => (
-              <TeacherCard key={index} teacher={teacher} />
-            ))}
-
+            <ul>
+              {a.map((teacher, index) => (
+                <TeacherCard key={index} teacher={teacher} />
+              ))}
+            </ul>
             <BtnLoadMore>Load more</BtnLoadMore>
 
         </TeachersPageContainer> 

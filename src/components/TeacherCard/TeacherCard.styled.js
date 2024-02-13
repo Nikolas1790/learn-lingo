@@ -1,7 +1,7 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
-export const WraperCard = styled.div`
+export const WraperCard = styled.li`
     position: relative;
     display: flex;
     margin-bottom: 32px;
@@ -140,6 +140,7 @@ export const LanguagesUnderlined = styled.p`
 export const ReadMoreBtn = styled.button`
     font-weight: 500;
     margin-bottom: 32px;
+    font-size: 16px;
     background: transparent;
     text-decoration: underline; 
     /* transition: text-decoration 0.3s linear; */
@@ -180,5 +181,23 @@ export const LevelLanguage = styled.li`
     &:first-child {
         border-color: transparent;
         background: ${color.darkGgeen}
+    }
+`
+
+//////////////////////////////////////////////////////
+
+export const TrialLessonBtn = styled.button`
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 32px;
+    background: transparent;
+    padding: 16px 48px 16px 48px;
+    background: ${color.darkGgeen};
+    border-radius: 12px;
+
+    transition: background 0.25s linear;
+    &:hover,
+    &:focus {    
+      background: ${color.lightGreene}; 
     }
 `
