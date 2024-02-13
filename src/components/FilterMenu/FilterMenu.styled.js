@@ -41,16 +41,19 @@ font-size: 18px;
 `;
 
 export const DropdownList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
   position: absolute;
+  z-index: 1;
   top: 100%;
   left: 0;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(18, 20, 23, 0.1);
   border-top: none;
   display: none;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   width: 100%;
   border-radius: 0 0 12px 12px;

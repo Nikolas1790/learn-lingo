@@ -2,12 +2,26 @@ import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
 export const WraperCard = styled.div`
+    position: relative;
     display: flex;
-    margin-bottom:  64px 64px;
-  /* align-items: center; */
-  /* flex-direction:column; */
+    margin-bottom: 32px;
+    border-radius: 24px;
+    background: ${color.whitePrimary};
+    width: 1184px;
  
 `
+export const CardHeartBtn = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  stroke: ${color.blackPrimary};
+  background: transparent;
+`;
 
 export const ImgCardConteiner = styled.div`
     padding: 24px;
@@ -21,7 +35,7 @@ export const BorderImgCard = styled.div`
     width: 120px;
     height: 120px;
     border-radius: 50%; 
-    border: 4px solid ${color.lightGreene};
+    border: 3px solid ${color.lightGreene};
     
 `
 
@@ -40,7 +54,7 @@ export const InformCardConteiner = styled.div`
 `
 export const MainInfBlock = styled.div`
     display: flex;
-    gap:20px;
+    /* gap:20px; */
     margin-bottom: 8px;
     
 `
@@ -52,6 +66,45 @@ export const Subtitle = styled.h3`
     /* margin-right: 192px; */
     color: ${color.subtitleColor};
 `
+export const LessonsOnline = styled.p`
+    display: flex;
+    align-items: center;
+    fill: ${color.whitePrimary};
+    stroke: ${color.blackPrimary};
+    margin-left: 192px;
+    gap: 4px;
+`
+
+export const Rating = styled.p`
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+`
+
+
+
+
+
+
+
+export const Divider = styled.div`
+    position: relative;
+    display: inline-block;
+    margin: 0 16px; 
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;        
+        height: 100%;
+        width: 1px;
+        background-color: rgba(18, 20, 23, 0.2); 
+    }
+`;
+
+
+
 export const Price = styled.span`
      color: ${color.BrightGreen};
 `
@@ -122,6 +175,10 @@ export const LevelLanguage = styled.li`
 
         padding: 8px 12px;
     border-radius: 35px;
-    border: 1px solid red;
+    border: 1px solid rgba(18, 20, 23, 0.2);
 
+    &:first-child {
+        border-color: transparent;
+        background: ${color.darkGgeen}
+    }
 `

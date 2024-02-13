@@ -44,5 +44,8 @@
 <path fill="none" stroke="#00ac4f" style="stroke: var(--color3, #00ac4f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.75" d="M3.667 15.167h23.333"></path>
 <path fill="none" stroke="#00ac4f" style="stroke: var(--color3, #00ac4f)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.75" d="M10.083 25.667h10.5"></path>
 </symbol>
+    <symbol id="icon-normal-heart" viewBox="0 0 32 32">
+      <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M27.787 6.147a7.345 7.345 0 0 0-5.187-2.15 7.33 7.33 0 0 0-5.187 2.15L16 7.56l-1.413-1.413a7.333 7.333 0 0 0-10.374 0 7.333 7.333 0 0 0 0 10.374L16 28.308l11.787-11.787a7.345 7.345 0 0 0 2.15-5.187 7.33 7.33 0 0 0-2.15-5.187z"/>
+    </symbol>
 </defs>
 </svg>
