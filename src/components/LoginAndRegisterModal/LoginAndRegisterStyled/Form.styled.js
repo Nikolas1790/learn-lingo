@@ -63,6 +63,7 @@ export const EyeSvg = styled.svg`
 
 export const FormBtn = styled.button`
   /* padding: 16px 192px; */
+  width: 100%;
   height: 60px;
   border-radius: 12px;
   background: ${color.darkGgeen};

@@ -1,4 +1,5 @@
 import color from 'common/GlobalColers';
+import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const Modal = styled.div`
@@ -122,8 +123,65 @@ export const YourTeacherNane = styled.h4`
   font-weight: 500;
 `;
 
+
+
+///////////////formic/////////////
+
 export const TitleOfRadioBtns = styled.h3`
   font-size: 24px;
 font-weight: 500;
 line-height: 1.33;
+margin-bottom: 20px;
+`;
+
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+`;
+
+export const GreenRadio = styled(Field)`
+margin-right: 8px;
+width: 20px;
+height: 20px;
+
+input[type="radio"] {
+    display: none;
+
+    &:checked + label {
+      background-color: green;
+      border-color: green;
+    }
+  }
+
+  label {
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+`;
+
+export const LabelRadio = styled.label`
+display: flex;
+align-items: center;
+font-weight: 400;
+  /* font-size: 16px;
+font-weight: 400;
+line-height: 22px; */
+`;
+
+
+
+
+export const GreenRadioWrapper = styled.div`
+  input[type="radio"] {
+    background-color: green;
+    border-color: green;
+    /* Другие стили, которые вы хотите применить для радио-кнопки */
+  }
 `;
