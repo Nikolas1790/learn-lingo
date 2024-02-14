@@ -37,6 +37,21 @@ export const WrapperModal = styled.div`
   border-radius: 30px;
   padding: 64px;
 `
+export const WrapperModalTrail = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+
+  max-width: 600px;
+
+
+  background-color: ${color.whitePrimary};
+  border-radius: 30px;
+  padding: 64px;
+`
+
 
 export const BtnClose = styled.button`
   position: absolute;
@@ -56,18 +71,59 @@ export const BtnClose = styled.button`
 
 /////////////////////////////////////////////////////
 
-export const LoginModalTitle = styled.h2`
+export const ModalTitle = styled.h2`
   font-weight: 500;
   font-size: 40px;
-line-height: 1.2;
+  line-height: 1.2;
   margin-bottom: 20px;
   /* letter-spacing: 1.4; */
 `;
 
-export const LoginModalText = styled.p`
+export const ModalText = styled.p`
   font-size: 16px;
 
   margin-bottom: 40px;
   color: rgba(18, 20, 23, 0.8);
   letter-spacing: 1.4;  
+`;
+
+export const ModalTextTrail = styled.p`
+  font-size: 16px;
+
+  margin-bottom: 20px;
+  color: rgba(18, 20, 23, 0.8);
+  letter-spacing: 1.4;  
+`;
+
+///////////  TrialLessonModal //////////////////////////
+
+export const YourTeacherBlock = styled.div`
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+`;
+
+export const YourTeacherImg = styled.img`
+  width: 44px;
+  height: 44px;
+    border-radius: 50%; 
+`;
+
+export const YourTeacher = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: ${color.subtitleColor};
+  margin-bottom: 4px;
+  line-height: 1.33;
+`;
+
+export const YourTeacherNane = styled.h4`
+  font-size: 16px;
+  font-weight: 500;
+`;
+
+export const TitleOfRadioBtns = styled.h3`
+  font-size: 24px;
+font-weight: 500;
+line-height: 1.33;
 `;

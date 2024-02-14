@@ -2,9 +2,21 @@ import { BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn
 import sprite from '../../img/svg-file.svg';
 import { useState } from "react";
 import EducationalBkg from "components/EducationalBkg/EducationalBkg";
+import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal";
 
   export default function TeacherCard({teacher}) {
     const [expanded, setExpanded] = useState(false);
+
+    const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
+
+    const openLoginModal = () => {
+      setTrailLessonModalOpen(true);
+    };
+
+    const closeModals = () => {
+      // console.log('Closing modals');
+      setTrailLessonModalOpen(false);
+  };
 
     const handleReadMoreClick = () => {
       // Переключение состояния раскрытия
@@ -80,8 +92,9 @@ import EducationalBkg from "components/EducationalBkg/EducationalBkg";
                     ))}
                 </LevelsList>
 
-                {expanded && <TrialLessonBtn>Book trial lesson</TrialLessonBtn>}
-
+                {expanded && <TrialLessonBtn onClick={openLoginModal} >Book trial lesson</TrialLessonBtn>}
+                
+                {trailLessonModalOpen && <TrialLessonModal closeModals={closeModals} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />}
             </InformCardConteiner>
         </WraperCard>      
     );

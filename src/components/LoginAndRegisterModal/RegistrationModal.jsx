@@ -1,4 +1,4 @@
-import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
+import { BtnClose,  Modal, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
 import sprite from '../../img/svg-file.svg';
 import RegistrationForm from "./RegistrationForm";
 
@@ -19,8 +19,8 @@ export default function RegistrationModal({closeModals}) {
         </svg>
       </BtnClose>
 
-      <LoginModalTitle>Registration</LoginModalTitle>
-      <LoginModalText>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</LoginModalText>
+      <ModalTitle>Registration</ModalTitle>
+      <ModalText>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</ModalText>
 
       <RegistrationForm onSubmit={handleLogin}/>          
     </WrapperModal>

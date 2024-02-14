@@ -7,8 +7,8 @@ export default function EducationalBkg({experience, reviews}) {
         <>
             <Experience>{experience}</Experience>
             <ul>
-                {reviews.map(({reviewer_name, reviewer_rating, comment }) => (
-                    <CustomerReviewBlock>
+                {reviews.map(({reviewer_name, reviewer_rating, comment }, id) => (
+                    <CustomerReviewBlock key={id}>
                         <ClientData>
                             <ClientImg src={unknownImage} alt={reviewer_name} />
                             <div>

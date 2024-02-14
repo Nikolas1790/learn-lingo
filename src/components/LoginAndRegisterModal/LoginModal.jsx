@@ -1,4 +1,4 @@
-import { BtnClose, LoginModalText, LoginModalTitle, Modal, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
+import { BtnClose,  Modal, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
 import sprite from '../../img/svg-file.svg';
 import LoginForm from "./LoginForm";
 
@@ -19,8 +19,8 @@ export default function LoginModal({closeModals}) {
             </svg>
           </BtnClose>
 
-          <LoginModalTitle>Log In</LoginModalTitle>
-          <LoginModalText>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</LoginModalText>
+          <ModalTitle>Log In</ModalTitle>
+          <ModalText>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</ModalText>
 
           <LoginForm onSubmit={handleLogin}/>          
         </WrapperModal>
