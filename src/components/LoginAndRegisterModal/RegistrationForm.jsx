@@ -4,7 +4,7 @@ import { EyeSvg, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordContein
 import { useState } from 'react';
 import sprite from '../../img/svg-file.svg';
 import { EmailErrorMessage, ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
-import {  createUserWithEmailAndPassword } from 'firebase/auth';
+import {  createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 const initialValues = {
@@ -36,12 +36,16 @@ export default function RegistrationForm({ onSubmit, closeModals }) {
     // await new Promise((resolve) => setTimeout(resolve, 500));
     // resetForm();
     // console.log(values)
-    await createUserWithEmailAndPassword(auth,  values.email, values.password)
-    .then(()=>{
+    try{
+    const userCredential = await createUserWithEmailAndPassword(auth,  values.email, values.password);  
+
+      await updateProfile(userCredential.user, {
+        displayName: values.name,
+      });
+
       resetForm();
       closeModals()
-    })
-    .catch((e) => {
+    } catch (e)  {
       // console.log(e)
       if (e.code === 'auth/email-already-in-use') {
         setEmailError('This email is in the database');
@@ -49,7 +53,7 @@ export default function RegistrationForm({ onSubmit, closeModals }) {
         setEmailError('Something went wrong, please try again');
       }
       // alert(" Такой мейл есть в базе")
-    })
+    }
     // alert(JSON.stringify(values, null, 2));
   }
   
