@@ -53,8 +53,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={schema}
-                    onSubmit={async (values) => {
+                    onSubmit={async (values, {resetForm}) => {
                         await new Promise((r) => setTimeout(r, 500));
+                        resetForm();
                         alert(JSON.stringify(values, null, 2));
                     }}
                 >

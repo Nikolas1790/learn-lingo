@@ -3,8 +3,9 @@ import * as Yup from 'yup';
 import { EyeSvg, FormBtn, FormField, FormFieldPassvord, FormFieldPassvordConteiner, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { useState } from 'react';
 import sprite from '../../img/svg-file.svg';
-import { ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
-
+import { EmailErrorMessage, ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
+import {  createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 const initialValues = {
   name: '',
@@ -18,23 +19,38 @@ const schema = Yup.object({
   password: Yup.string().required('Required').min(6, "Password must be at least 6 characters"),
 });
 
-export default function RegistrationForm({ onSubmit }) {
-
+export default function RegistrationForm({ onSubmit, closeModals }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const togglePasswordVisibility = () => {
-    if (showPassword === false) {
-      setShowPassword(true);
-    }
-    if (showPassword === true) {
-      setShowPassword(false);
-    }
-  };
-  
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+    // if (showPassword === false) {
+    //   setShowPassword(true);
+    // }
+    // if (showPassword === true) {
+    //   setShowPassword(false);
+    // }
+  };  
   const handleSubmit = async (values, {resetForm}) => {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    resetForm();
-    alert(JSON.stringify(values, null, 2));
+    // await new Promise((resolve) => setTimeout(resolve, 500));
+    // resetForm();
+    // console.log(values)
+    await createUserWithEmailAndPassword(auth,  values.email, values.password)
+    .then(()=>{
+      resetForm();
+      closeModals()
+    })
+    .catch((e) => {
+      // console.log(e)
+      if (e.code === 'auth/email-already-in-use') {
+        setEmailError('This email is in the database');
+      } else {
+        setEmailError('Something went wrong, please try again');
+      }
+      // alert(" Такой мейл есть в базе")
+    })
+    // alert(JSON.stringify(values, null, 2));
   }
   
   return (
@@ -57,30 +73,35 @@ export default function RegistrationForm({ onSubmit }) {
                         errors.email && touched.email ? "red" : null,
                     }} 
                 />
-                <ErrorMessageStyled name="email" component='div' />
-                <FormFieldPassvordConteiner>
-                    <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
-                        borderColor:
-                            errors.password && touched.password ? "red" : null,
-                    }} />
+                <ErrorMessageStyled name="email" component='div' ></ErrorMessageStyled>
 
-                    {showPassword ? (
-                        <EyeSvg
-                            width={20}
-                            height={20}
-                            onClick={togglePasswordVisibility}
-                        >
-                            <use href={`${sprite}#icon-eye`} />
-                        </EyeSvg>
-                      ) : (
-                        <EyeSvg
-                          width={20}
-                          height={20}
-                          onClick={togglePasswordVisibility}
-                        >
-                          <use href={`${sprite}#icon-eye-off`} />
-                        </EyeSvg>
-                      )}
+                {emailError && (
+                  <EmailErrorMessage >{emailError}</EmailErrorMessage>
+                )}
+
+                <FormFieldPassvordConteiner>
+                  <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
+                        borderColor:
+                          errors.password && touched.password ? "red" : null,
+                  }} />
+
+                  {showPassword ? (
+                  <EyeSvg
+                    width={20}
+                    height={20}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <use href={`${sprite}#icon-eye`} />
+                  </EyeSvg>
+                    ) : (
+                  <EyeSvg
+                    width={20}
+                    height={20}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <use href={`${sprite}#icon-eye-off`} />
+                  </EyeSvg>
+                  )}
                 <ErrorMessagePassword name="password" component='div' />
                 </FormFieldPassvordConteiner>
 

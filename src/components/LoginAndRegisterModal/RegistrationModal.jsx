@@ -22,7 +22,7 @@ export default function RegistrationModal({closeModals}) {
       <ModalTitle>Registration</ModalTitle>
       <ModalText>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</ModalText>
 
-      <RegistrationForm onSubmit={handleLogin}/>          
+      <RegistrationForm onSubmit={handleLogin} closeModals={closeModals}/>          
     </WrapperModal>
     </Modal>
   );

@@ -22,7 +22,7 @@ export default function LoginModal({closeModals}) {
           <ModalTitle>Log In</ModalTitle>
           <ModalText>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</ModalText>
 
-          <LoginForm onSubmit={handleLogin}/>          
+          <LoginForm onSubmit={handleLogin} closeModals={closeModals}/>          
         </WrapperModal>
       </Modal>
     );
