@@ -47,5 +47,15 @@
     <symbol id="icon-normal-heart" viewBox="0 0 32 32">
       <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M27.787 6.147a7.345 7.345 0 0 0-5.187-2.15 7.33 7.33 0 0 0-5.187 2.15L16 7.56l-1.413-1.413a7.333 7.333 0 0 0-10.374 0 7.333 7.333 0 0 0 0 10.374L16 28.308l11.787-11.787a7.345 7.345 0 0 0 2.15-5.187 7.33 7.33 0 0 0-2.15-5.187z"/>
     </symbol>
+
+    <symbol id="icon-image" viewBox="0 0 32 32">
+<path fill="#fff" style="fill: var(--color1, #fff)" d="M8 0h16c4.418 0 8 3.582 8 8v16c0 4.418-3.582 8-8 8h-16c-4.418 0-8-3.582-8-8v-16c0-4.418 3.582-8 8-8z"></path>
+<path fill="#9fbaae" style="fill: var(--color2, #9fbaae)" d="M16 9.6c0.848 0 1.662 0.337 2.262 0.937s0.938 1.414 0.938 2.263-0.338 1.663-0.938 2.263c-0.6 0.6-1.414 0.937-2.262 0.937s-1.662-0.337-2.262-0.937c-0.6-0.6-0.938-1.414-0.938-2.263s0.338-1.663 0.938-2.263c0.6-0.6 1.414-0.937 2.262-0.937zM16 17.6c3.536 0 6.4 1.432 6.4 3.2v1.6h-12.8v-1.6c0-1.768 2.864-3.2 6.4-3.2z"></path>
+</symbol>
+<symbol id="icon-eye" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 5.333c9.334 0 14.667 10.667 14.667 10.667s-5.334 10.667-14.667 10.667c-9.333 0-14.666-10.667-14.666-10.667s5.334-10.667 14.666-10.667z"></path>
+<path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 20c-2.209 0-4-1.791-4-4s1.791-4 4-4c2.209 0 4 1.791 4 4s-1.791 4-4 4z"></path>
+</symbol>
+
 </defs>
 </svg>
