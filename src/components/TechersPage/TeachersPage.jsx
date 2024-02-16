@@ -1,6 +1,8 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
 import { BtnLoadMore, TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
 import TeacherCard from "components/TeacherCard/TeacherCard";
+// import { useEffect, useState } from "react";
+// import { getDatabase, ref, get } from 'firebase/database';
 const a = [
   {
     "name": "John",
@@ -118,6 +120,34 @@ const a = [
 ]
 
   export default function TeachersPage() {
+  //   const [teachers, setTeachers] = useState([]);
+  //   const db = getDatabase();
+
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+
+
+  //       try {
+         
+  //         const teachersRef = ref(db, 'teachers');
+  //         console.log('teachersRef')
+  //         const snapshot = await get(teachersRef);
+          
+  // console.log(snapshot)
+  //         if (snapshot.exists()) {
+  //           const teachersData = snapshot.val();
+  //           // Преобразуйте данные в массив объектов и установите его в состояние
+  //           setTeachers(Object.values(teachersData));
+  //         } else {
+  //           console.log('No data available');
+  //         }
+  //       } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //       }
+  //     };
+  
+  //     fetchData();
+  //   }, [db]);
     return (   
       <WraperBox>
         <TeachersPageContainer>
