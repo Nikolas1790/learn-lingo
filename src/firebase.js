@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+// import { getDatabase } from "firebase/database";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -8,6 +10,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyANQdHZQoSank5qU1Gvm2aXNzyTPjVq94k",
   authDomain: "lingo-2cb9e.firebaseapp.com",
+  // dataBaseUrl : "https://lingo-2cb9e-default-rtdb.firebaseio.com/",
   projectId: "lingo-2cb9e",
   storageBucket: "lingo-2cb9e.appspot.com",
   messagingSenderId: "78659414357",
@@ -17,3 +20,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// export const dataBase = getDatabase(app)
