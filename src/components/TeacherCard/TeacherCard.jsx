@@ -9,8 +9,8 @@ import { onAuthStateChanged } from "firebase/auth";
   export default function TeacherCard({teacher}) {
     const [expanded, setExpanded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
-
     const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
+
     useEffect(() => {
       // Подписываемся на события изменения статуса аутентификации
       const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -22,24 +22,15 @@ import { onAuthStateChanged } from "firebase/auth";
       return () => unsubscribe();
     }, [teacher.avatar_url]);
 
-    useEffect(() => {     
-      const userId = auth.currentUser?.uid;      
-      const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-      setIsFavorite(storedFavorites.some(fav => fav.avatar_url === teacher.avatar_url));  
-    }, [ teacher.avatar_url]);
-
 
     const openLoginModal = () => {
       setTrailLessonModalOpen(true);
     };
-
     const closeModals = () => {
       // console.log('Closing modals');
       setTrailLessonModalOpen(false);
   };
-
     const handleReadMoreClick = () => {
-      // Переключение состояния раскрытия
       setExpanded((prevExpanded) => !prevExpanded);
     };
 
@@ -56,10 +47,8 @@ import { onAuthStateChanged } from "firebase/auth";
         } else {
           const updatedFavorites = storedFavorites.filter((fav) => fav.avatar_url !== teacher.avatar_url);
           localStorage.setItem(`favorites-${userId}`, JSON.stringify(updatedFavorites));
-        }
-        
+        }        
       } else {
-        setIsFavorite(false);
         alert("Для добавления в избранное вам необходимо войти в систему.");
       }
     };
