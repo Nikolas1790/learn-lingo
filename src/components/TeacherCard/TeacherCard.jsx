@@ -1,4 +1,4 @@
-import { BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn, Divider, FullName, ImgCard, ImgCardConteiner, InformCardConteiner, LanguagesUnderlined, LessonsOnline, LevelLanguage, LevelsList, MainInfBlock, Price, Rating, ReadMoreBtn, Subtitle, TrialLessonBtn, WraperCard } from "./TeacherCard.styled";
+import { ActiveGreenSvg, BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn, Divider, FullName, ImgCard, ImgCardConteiner, InformCardConteiner, LanguagesUnderlined, LessonsOnline, LevelLanguage, LevelsList, MainInfBlock, Price, Rating, ReadMoreBtn, Subtitle, TrialLessonBtn, WraperCard } from "./TeacherCard.styled";
 import sprite from '../../img/svg-file.svg';
 import { useState } from "react";
 import EducationalBkg from "components/EducationalBkg/EducationalBkg";
@@ -32,9 +32,13 @@ import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal"
           </CardHeartBtn>
 
           <ImgCardConteiner>
-            <BorderImgCard>
+          <BorderImgCard>
               <ImgCard src={teacher.avatar_url} alt="teachers photo" />
-            </BorderImgCard>                
+              <ActiveGreenSvg width={12} height={12} >
+                <use href={`${sprite}#icon-geen-circle`} />
+              </ActiveGreenSvg>
+
+            </BorderImgCard>               
           </ImgCardConteiner>
 
             <InformCardConteiner>

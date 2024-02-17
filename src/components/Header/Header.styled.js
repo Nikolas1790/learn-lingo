@@ -19,26 +19,33 @@ export const HeaderNav = styled.nav`
 `
 
 export const StyledNavigation = styled(NavLink)` 
-  
+  position: relative;
   padding: 14px;
   font-size: 16px;
   line-height: 1.25;
-  /* transition: transform 0.3s linear; */
 
-  /* &:hover,
-  &:focus {
-    color:  ${color.lightBlue};
-    transform: scale(1.1);    
-  } */
+  &.active {
 
-  /* &.active {
-    color:  ${color.whitePrimary};
-    font-weight: bold;    
-  } */
+    &::after {
+      content: '';
+      /* display: block; */
+      position: absolute;
+      width: 8px;
+      height: 8px; 
+      border-radius: 50%; 
+      background-color: ${color.darkGgeen};
+      left: 50%; 
+      transform: translateX(-50%);
+      top: 75%; 
+    }
+  }
 
-  /* &:not(:last-child) {
-    margin-right: 40px;
-  } */
+  &:first-of-type.active {
+    &::after {
+      display: none;
+    }
+  }
+
 `
 
 

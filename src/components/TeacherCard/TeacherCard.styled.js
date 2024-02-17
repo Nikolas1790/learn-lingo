@@ -29,6 +29,7 @@ export const ImgCardConteiner = styled.div`
 `
 
 export const BorderImgCard = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,6 +43,15 @@ export const BorderImgCard = styled.div`
 export const ImgCard = styled.img`
     max-width: 96px;
     border-radius: 50%; 
+  
+`
+
+export const ActiveGreenSvg = styled.svg`
+    position: absolute;
+    top: 17px;
+  right: 17px;
+    /* max-width: 96px; */
+    /* border-radius: 50%;  */
   
 `
 //////////////////////////////////////////////////////////
