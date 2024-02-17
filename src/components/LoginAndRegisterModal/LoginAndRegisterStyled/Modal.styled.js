@@ -15,12 +15,7 @@ export const Modal = styled.div`
   display: flex;
    z-index:5;
    background: rgba(25, 26, 21, 0.6);
-  /* &.active {
-    transform: scale(1);
-    align-items: center;
-    justify-content: center; 
-    
-  } */
+
 `;
 
 export const WrapperModal = styled.div`
@@ -142,46 +137,45 @@ export const FormGroup = styled.div`
 `;
 
 export const GreenRadio = styled(Field)`
-margin-right: 8px;
-width: 20px;
-height: 20px;
-
-input[type="radio"] {
-    display: none;
-
-    &:checked + label {
-      background-color: green;
-      border-color: green;
-    }
-  }
-
-  label {
-    width: 20px;
-    height: 20px;
-    border: 1px solid red;
-    background-color: red;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-  }
+display: none;
 `;
 
 export const LabelRadio = styled.label`
+position: relative;
+white-space: nowrap;
 display: flex;
 align-items: center;
 font-weight: 400;
-  /* font-size: 16px;
-font-weight: 400;
-line-height: 22px; */
+ 
+&::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid ${color.subtitleColor};
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+  }
 `;
 
 
 
+export const CheckBoxActiveWrapper = styled.div`
+position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid ${color.darkGgeen};
+  border-radius: 50%;
+  background: ${color.whitePrimary};
 
-export const GreenRadioWrapper = styled.div`
-  input[type="radio"] {
-    background-color: green;
-    border-color: green;
-    /* Другие стили, которые вы хотите применить для радио-кнопки */
-  }
+`;
+
+export const CheckBoxActive = styled.div`
+  width: 10px;
+  height: 10px;
+  background: ${color.darkGgeen};
+  border-radius: 50%;
 `;

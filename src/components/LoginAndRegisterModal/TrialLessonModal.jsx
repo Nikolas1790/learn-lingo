@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../img/svg-file.svg';
-import { BtnClose, FormGroup, GreenRadio, LabelRadio, Modal,  ModalTextTrail, ModalTitle, TitleOfRadioBtns, WrapperModalTrail, YourTeacher, YourTeacherBlock, YourTeacherImg, YourTeacherNane } from './LoginAndRegisterStyled/Modal.styled';
+import { BtnClose, CheckBoxActive, CheckBoxActiveWrapper, FormGroup, GreenRadio, LabelRadio, Modal,  ModalTextTrail, ModalTitle, TitleOfRadioBtns, WrapperModalTrail, YourTeacher, YourTeacherBlock, YourTeacherImg, YourTeacherNane } from './LoginAndRegisterStyled/Modal.styled';
 import {  FormBtn, FormField, FormFieldPassvord, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
+
+// import radioButton from '../../img/RadioButton.jpg';
+
+
 
 const initialValues = {
     picked: '',
@@ -21,6 +25,10 @@ const schema = Yup.object({
   });
 
 export default function TrialLessonModal({closeModals, fullName, img}) {
+    const [selectedOption, setSelectedOption] = useState(null);
+    const handleRadioChange = (value) => {
+        setSelectedOption(value);
+      };
 
 //   const handleLogin = (values) => {
 //     // Реализуйте логику для отправки данных на сервер или другую необходимую обработку
@@ -57,6 +65,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                         await new Promise((r) => setTimeout(r, 500));
                         resetForm();
                         alert(JSON.stringify(values, null, 2));
+                        setSelectedOption(values.picked)
                     }}
                 >
                     {({ errors, touched }) => (
@@ -64,23 +73,49 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                             <TitleOfRadioBtns id="my-radio-group">What is your main reason for learning English?</TitleOfRadioBtns>
                             <FormGroup role="group" aria-labelledby="my-radio-group">
                                 <LabelRadio>
-                                    <GreenRadio type="radio" name="picked" value="Career and business" />
+                                {selectedOption === 'careerBusiness' &&
+                                    <CheckBoxActiveWrapper>
+                                        <CheckBoxActive></CheckBoxActive>
+                                    </CheckBoxActiveWrapper>
+                                 }   
+                                    <GreenRadio type="radio" name="picked" value="Career and business" onChange={() => handleRadioChange('careerBusiness')} />
+                                    
                                     Career and business
                                 </LabelRadio>
                                 <LabelRadio>
-                                    <GreenRadio type="radio" name="picked" value="Lesson for kids" />
+                                {selectedOption === 'lessonForKids' &&
+                                    <CheckBoxActiveWrapper>
+                                        <CheckBoxActive></CheckBoxActive>
+                                    </CheckBoxActiveWrapper>
+                                     }
+                                    <GreenRadio type="radio" name="picked" value="Lesson for kids" onChange={() => handleRadioChange('lessonForKids')} />
                                     Lesson for kids
                                 </LabelRadio>
                                 <LabelRadio>
-                                    <GreenRadio type="radio" name="picked" value="Living abroad" />
+                                {selectedOption === 'livingAbroad' &&
+                                    <CheckBoxActiveWrapper>
+                                        <CheckBoxActive></CheckBoxActive>
+                                    </CheckBoxActiveWrapper>
+                                 }
+                                    <GreenRadio type="radio" name="picked" value="Living abroad"  onChange={() => handleRadioChange('livingAbroad')} />
                                     Living abroad
                                 </LabelRadio>
                                 <LabelRadio>
-                                    <GreenRadio type="radio" name="picked" value="Exams and coursework" />
+                                    {selectedOption === 'exams' &&
+                                        <CheckBoxActiveWrapper>
+                                            <CheckBoxActive></CheckBoxActive>
+                                        </CheckBoxActiveWrapper>
+                                     }
+                                    <GreenRadio type="radio" name="picked" value="Exams and coursework" onChange={() => handleRadioChange('exams')}  />
                                     Exams and coursework
                                 </LabelRadio>
                                 <LabelRadio>
-                                    <GreenRadio type="radio" name="picked" value="Culture, travel or hobby" />
+                                    {selectedOption === 'culture' &&
+                                        <CheckBoxActiveWrapper>
+                                            <CheckBoxActive></CheckBoxActive>
+                                        </CheckBoxActiveWrapper>
+                                     }
+                                    <GreenRadio type="radio" name="picked" value="Culture, travel or hobby"  onChange={() => handleRadioChange('culture')} />
                                     Culture, travel or hobby
                                 </LabelRadio>
                                 </FormGroup>
