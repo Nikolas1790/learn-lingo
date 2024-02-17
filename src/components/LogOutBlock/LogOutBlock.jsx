@@ -11,6 +11,7 @@ export default function LogOutBlock() {
 
     function userSignOut() {
         signOut(auth)
+        // window.location.reload();
         // .then(() => console.log("success"))
         // .catch((e) => console.log(e))
     }

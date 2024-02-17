@@ -1,13 +1,33 @@
 import { ActiveGreenSvg, BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn, Divider, FullName, ImgCard, ImgCardConteiner, InformCardConteiner, LanguagesUnderlined, LessonsOnline, LevelLanguage, LevelsList, MainInfBlock, Price, Rating, ReadMoreBtn, Subtitle, TrialLessonBtn, WraperCard } from "./TeacherCard.styled";
 import sprite from '../../img/svg-file.svg';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EducationalBkg from "components/EducationalBkg/EducationalBkg";
 import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal";
+import { auth } from '../../firebase';
+import { onAuthStateChanged } from "firebase/auth";
 
   export default function TeacherCard({teacher}) {
     const [expanded, setExpanded] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
+    useEffect(() => {
+      // Подписываемся на события изменения статуса аутентификации
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const userId = user?.uid;
+        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+        setIsFavorite(storedFavorites.some(fav => fav.avatar_url === teacher.avatar_url));
+      });
+    
+      return () => unsubscribe();
+    }, [teacher.avatar_url]);
+
+    useEffect(() => {     
+      const userId = auth.currentUser?.uid;      
+      const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+      setIsFavorite(storedFavorites.some(fav => fav.avatar_url === teacher.avatar_url));  
+    }, [ teacher.avatar_url]);
+
 
     const openLoginModal = () => {
       setTrailLessonModalOpen(true);
@@ -23,11 +43,33 @@ import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal"
       setExpanded((prevExpanded) => !prevExpanded);
     };
 
+    const handleHeartClick = () => {
+      const userId = auth.currentUser?.uid;
+      if (auth.currentUser) {
+        const newIsFavorite = !isFavorite;
+        setIsFavorite(newIsFavorite);
+  
+        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+  
+        if (newIsFavorite) {
+          localStorage.setItem(`favorites-${userId}`, JSON.stringify([...storedFavorites, teacher]));
+        } else {
+          const updatedFavorites = storedFavorites.filter((fav) => fav.avatar_url !== teacher.avatar_url);
+          localStorage.setItem(`favorites-${userId}`, JSON.stringify(updatedFavorites));
+        }
+        
+      } else {
+        setIsFavorite(false);
+        alert("Для добавления в избранное вам необходимо войти в систему.");
+      }
+    };
+
+
     return (   
         <WraperCard>
-          <CardHeartBtn >
+          <CardHeartBtn onClick={handleHeartClick} >
             <svg width={26} height={26} >
-              <use href={`${sprite}#icon-normal-heart`} />
+              <use href={`${sprite}#${isFavorite ? 'icon-heart-active' : 'icon-normal-heart'}`} />
             </svg>
           </CardHeartBtn>
 

@@ -42,17 +42,9 @@ export default function LoginForm({ onSubmit, closeModals }) {
     .catch((e) => {
       setError("Sorry couldn`t find your account")
       resetForm();
-      // console.log(e)
-      // if (e.code === 'auth/email-already-in-use') {
-      //   setEmailError('This email is in the database');
-      // } else {
-      //   setEmailError('');
-      // }
-      // alert(" Такой мейл есть в базе")
+
     })
 
-    // resetForm();
-    alert(JSON.stringify(values, null, 2));
   }
   
   return (

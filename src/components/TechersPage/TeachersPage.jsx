@@ -143,8 +143,26 @@ import { getDatabase, ref, get } from 'firebase/database';
       fetchData();
     }, [db, visibleTeachers]);
 
-    const handleLoadMore = () => {
-      setVisibleTeachers(prevVisibleTeachers => prevVisibleTeachers + 4);
+    const handleLoadMore = async () => {
+      try {
+        const teachersRef = ref(db, 'teachers');
+        const snapshot = await get(teachersRef);
+  
+        if (snapshot.exists()) {
+          const teachersData = snapshot.val();
+          const teachersArray = Object.values(teachersData);
+          const newVisibleTeachers = teachersArray.slice(
+            visibleTeachers,
+            visibleTeachers + 4
+          );
+          setTeachers((prevTeachers) => [...prevTeachers, ...newVisibleTeachers]);
+          setVisibleTeachers((prevVisibleTeachers) => prevVisibleTeachers + 4);
+        } else {
+          console.log('No data available');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     return (   
