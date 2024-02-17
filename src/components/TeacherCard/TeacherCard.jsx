@@ -96,7 +96,7 @@ import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal"
                     ))}
                 </LevelsList>
 
-                {expanded && <TrialLessonBtn onClick={openLoginModal} >Book trial lesson</TrialLessonBtn>}
+                {expanded && <TrialLessonBtn onClick={openLoginModal}  >Book trial lesson</TrialLessonBtn>}
                 
                 {trailLessonModalOpen && <TrialLessonModal closeModals={closeModals} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />}
             </InformCardConteiner>

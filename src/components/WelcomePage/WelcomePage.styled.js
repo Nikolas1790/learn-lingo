@@ -58,7 +58,7 @@ export const TitleLenguage = styled.span`
   &::before {
     content: '';
     position: absolute;
-    top: 12px;
+    top: 14px;
     left: 0px;
     right: 0;
     bottom: 2px;

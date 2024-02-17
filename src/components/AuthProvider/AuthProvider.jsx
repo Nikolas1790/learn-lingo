@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         setAuthUser(user);
       } else {
         setAuthUser(null);

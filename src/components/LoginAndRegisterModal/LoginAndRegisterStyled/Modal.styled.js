@@ -138,6 +138,7 @@ export const FormGroup = styled.div`
 
 export const GreenRadio = styled(Field)`
 display: none;
+
 `;
 
 export const LabelRadio = styled.label`

@@ -47,7 +47,9 @@ export const FormFieldPassvord = styled(Field)`
   &:hover {
     /* color: #407bff; */
   }
-
+  /* &::placeholder {
+    color: ${color.blackPrimary};
+  } */
 `;
 
 export const EyeSvg = styled.svg`

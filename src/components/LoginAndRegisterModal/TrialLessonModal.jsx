@@ -61,14 +61,17 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                 <Formik
                     initialValues={initialValues}
                     validationSchema={schema}
-                    onSubmit={async (values, {resetForm}) => {
+                    onSubmit={async (values, {resetForm, setFieldValue}) => {
                         await new Promise((r) => setTimeout(r, 500));
+                        setFieldValue('picked', values.picked);
                         resetForm();
-                        alert(JSON.stringify(values, null, 2));
+                        // alert(JSON.stringify(values, null, 2));
+                     
                         setSelectedOption(values.picked)
+                        closeModals()
                     }}
                 >
-                    {({ errors, touched }) => (
+                    {({ errors, touched, setFieldValue }) => (
                         <Form>
                             <TitleOfRadioBtns id="my-radio-group">What is your main reason for learning English?</TitleOfRadioBtns>
                             <FormGroup role="group" aria-labelledby="my-radio-group">
@@ -78,7 +81,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                         <CheckBoxActive></CheckBoxActive>
                                     </CheckBoxActiveWrapper>
                                  }   
-                                    <GreenRadio type="radio" name="picked" value="Career and business" onChange={() => handleRadioChange('careerBusiness')} />
+                                    <GreenRadio type="radio" name="picked" value="Career and business"  onChange={() => {
+                                        setFieldValue('picked', 'careerBusiness');
+                                        handleRadioChange('careerBusiness')}}/>
                                     
                                     Career and business
                                 </LabelRadio>
@@ -88,7 +93,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                         <CheckBoxActive></CheckBoxActive>
                                     </CheckBoxActiveWrapper>
                                      }
-                                    <GreenRadio type="radio" name="picked" value="Lesson for kids" onChange={() => handleRadioChange('lessonForKids')} />
+                                    <GreenRadio type="radio" name="picked" value="Lesson for kids" onChange={() => {
+                                        setFieldValue('picked', 'lessonForKids');
+                                        handleRadioChange('lessonForKids')}} />
                                     Lesson for kids
                                 </LabelRadio>
                                 <LabelRadio>
@@ -97,7 +104,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                         <CheckBoxActive></CheckBoxActive>
                                     </CheckBoxActiveWrapper>
                                  }
-                                    <GreenRadio type="radio" name="picked" value="Living abroad"  onChange={() => handleRadioChange('livingAbroad')} />
+                                    <GreenRadio type="radio" name="picked" value="Living abroad"  onChange={() => {
+                                        setFieldValue('picked', 'livingAbroad');
+                                        handleRadioChange('livingAbroad')}} />
                                     Living abroad
                                 </LabelRadio>
                                 <LabelRadio>
@@ -106,7 +115,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                             <CheckBoxActive></CheckBoxActive>
                                         </CheckBoxActiveWrapper>
                                      }
-                                    <GreenRadio type="radio" name="picked" value="Exams and coursework" onChange={() => handleRadioChange('exams')}  />
+                                    <GreenRadio type="radio" name="picked" value="Exams and coursework" onChange={() => {
+                                        setFieldValue('picked', 'exams');
+                                        handleRadioChange('exams')}}  />
                                     Exams and coursework
                                 </LabelRadio>
                                 <LabelRadio>
@@ -115,7 +126,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                             <CheckBoxActive></CheckBoxActive>
                                         </CheckBoxActiveWrapper>
                                      }
-                                    <GreenRadio type="radio" name="picked" value="Culture, travel or hobby"  onChange={() => handleRadioChange('culture')} />
+                                    <GreenRadio type="radio" name="picked" value="Culture, travel or hobby"  onChange={() => {
+                                        setFieldValue('picked', 'culture');
+                                        handleRadioChange('culture')}} />
                                     Culture, travel or hobby
                                 </LabelRadio>
                                 </FormGroup>
