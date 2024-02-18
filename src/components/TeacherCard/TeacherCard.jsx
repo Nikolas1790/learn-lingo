@@ -36,7 +36,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
     const handleHeartClick = () => {
       const userId = auth.currentUser?.uid;
-      if (auth.currentUser) {
+      if (userId) {
         const newIsFavorite = !isFavorite;
         setIsFavorite(newIsFavorite);
   
