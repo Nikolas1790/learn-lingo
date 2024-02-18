@@ -8,14 +8,17 @@ import { useEffect, useState } from "react";
 export default function FavoritePage() {
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
-  const [storedFavoritesLength, setStoredFavoritesLength] = useState(0);
 
   useEffect(() => {
     const userId = auth.currentUser?.uid;
     const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-    setStoredFavoritesLength(storedFavorites.length)
-    setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
-  }, [visibleTeachers, favoriteTeachers]);
+    
+    // console.log(v)
+    if (storedFavorites.length !== visibleTeachers) {
+      
+      setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
+    }
+  }, [visibleTeachers]);
 
   const handleLoadMore = () => {
     const userId = auth.currentUser?.uid;
@@ -39,7 +42,7 @@ export default function FavoritePage() {
                 <TeacherCard key={index} teacher={teacher} />
               ))}
             </ul>
-            {storedFavoritesLength <= visibleTeachers ? null : (
+            {favoriteTeachers.length <= visibleTeachers ? null : (
                <BtnLoadMore onClick={handleLoadMore}>Load more</BtnLoadMore>
             )}
         </FavoritePageContainer> 
