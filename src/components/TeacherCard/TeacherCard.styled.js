@@ -4,11 +4,14 @@ import styled from 'styled-components'
 export const WraperCard = styled.li`
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 32px;
     border-radius: 24px;
     background: ${color.whitePrimary};
     width: 1184px;
- 
+    @media (max-width: 1216px) {
+       width: auto;
+  };
 `
 export const CardHeartBtn = styled.button`
   position: absolute;
@@ -24,8 +27,7 @@ export const CardHeartBtn = styled.button`
 `;
 
 export const ImgCardConteiner = styled.div`
-    padding: 24px;
-    
+    padding: 24px;    
 `
 
 export const BorderImgCard = styled.div`
@@ -36,52 +38,57 @@ export const BorderImgCard = styled.div`
     width: 120px;
     height: 120px;
     border-radius: 50%; 
-    border: 3px solid ${color.lightGreene};
-    
+    border: 3px solid ${color.lightGreene};    
 `
 
 export const ImgCard = styled.img`
     max-width: 96px;
-    border-radius: 50%; 
-  
+    border-radius: 50%;   
 `
 
 export const ActiveGreenSvg = styled.svg`
     position: absolute;
     top: 17px;
-  right: 17px;
-    /* max-width: 96px; */
-    /* border-radius: 50%;  */
-  
+    right: 17px;  
 `
 //////////////////////////////////////////////////////////
 
 export const InformCardConteiner = styled.div`
     padding: 24px;
-    font-weight: 500;
-     /* font-size: 16px;  */
-    
+    font-weight: 500;    
 `
 export const MainInfBlock = styled.div`
     display: flex;
-    /* gap:20px; */
-    margin-bottom: 8px;
-    
+    flex-wrap: wrap;
+    margin-bottom: 8px;    
 `
 
 export const Subtitle = styled.h3`
     font-size: 16px;
     font-weight: 500;
-
-    /* margin-right: 192px; */
     color: ${color.subtitleColor};
+
+    @media (max-width: 1160px) {
+        margin-bottom: 12px;
+  };
 `
+export const InformShortCardConteiner = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 192px;
+    
+    @media (max-width: 1160px) {
+        margin-left: 40px;
+        margin-bottom: 32px;
+  };    
+`
+
 export const LessonsOnline = styled.p`
     display: flex;
     align-items: center;
     fill: ${color.whitePrimary};
     stroke: ${color.blackPrimary};
-    margin-left: 192px;
+    
     gap: 4px;
 `
 
@@ -89,14 +96,7 @@ export const Rating = styled.p`
     display: flex;
     align-items: center;
     gap: 4px;
-
 `
-
-
-
-
-
-
 
 export const Divider = styled.div`
     position: relative;
@@ -111,6 +111,10 @@ export const Divider = styled.div`
         width: 1px;
         background-color: rgba(18, 20, 23, 0.2); 
     }
+
+    @media (max-width: 560px) {
+       display: none;
+  };
 `;
 
 
@@ -122,7 +126,6 @@ export const Price = styled.span`
 export const FullName = styled.h2`
     margin-bottom: 32px;
     line-height: 1;
-     /* color: ${color.BrightGreen}; */
 `
 
 
@@ -130,22 +133,16 @@ export const BlockSkills = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 16px;
-
-    /* padding: 24px; */    
+    margin-bottom: 16px;  
 `
 
 export const BlockShortInformationsTeacher = styled.div`
     display: flex;
-    gap:2px;
-
-    /* padding: 24px; */    
+    gap:2px;   
 `
 export const LanguagesUnderlined = styled.p`
     text-decoration: underline;   
 `
-
-
 
 export const ReadMoreBtn = styled.button`
     font-weight: 500;
@@ -153,7 +150,6 @@ export const ReadMoreBtn = styled.button`
     font-size: 16px;
     background: transparent;
     text-decoration: underline; 
-    /* transition: text-decoration 0.3s linear; */
 
     &:hover {
         text-decoration: none; 
@@ -163,28 +159,15 @@ export const ReadMoreBtn = styled.button`
 
 export const LevelsList = styled.ul`
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 1.14;
-    /* padding: 8px 12px;
-    border: red;
-    background: red; */
-  
-    /* transition: text-decoration 0.3s linear; */
-    /* &:hover {
-        text-decoration: none; 
-    } */
 `
 
 export const LevelLanguage = styled.li`
-    /* display: flex;
-    gap: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1.14; */
-
-        padding: 8px 12px;
+    padding: 8px 12px;
     border-radius: 35px;
     border: 1px solid rgba(18, 20, 23, 0.2);
 

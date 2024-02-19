@@ -6,8 +6,6 @@ export const WraperBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction:column;
-  /* background-size: cover;
-  min-height: 640px; */
 `
 
 export const WelcomePageContainer = styled.div`
@@ -21,11 +19,10 @@ export const WelcomePageContainer = styled.div`
 export const ContainerGreeting = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
   margin-bottom: 24px;
-  /* flex-direction:column; */
-
 `
 
 ////////////  ContainerMainInf  //////////////////////////////////
@@ -36,6 +33,9 @@ export const ContainerMainInf = styled.div`
   border-radius: 30px;
   background: ${color.whiteDarker};
 
+  @media (max-width: 500px) {
+    padding: 10px 5px;
+  }
 `
 
 export const Title = styled.h1`
@@ -74,7 +74,6 @@ export const MotivationalText = styled.p`
   font-size: 16px;
   line-height: 1.38;
   margin-bottom: 64px;
-
 `
 export const BtnGetStarted = styled(NavLink)`
 display: inline-block;
@@ -89,31 +88,22 @@ transition: background 0.25s linear;
 &:focus {    
   background: ${color.lightGreene}; 
 }
+ &:active {
+    background: linear-gradient(to bottom, ${color.darkGgeen}, ${color.lightGreene});
+  }
 `
 
 ////////////  /\ ContainerMainInf  //////////////////////////////////
 export const ChildImg = styled.img`
 border-radius: 30px;
-  /* max-width: 568px; */
-  /* max-width: 100%;
-  height: auto; */
 `
-
-
-
-
-
-
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////
 
 export const ContainerBenefits = styled.div`
-
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap:  wrap;
   gap: 100px;
 
@@ -123,7 +113,9 @@ export const ContainerBenefits = styled.div`
   border: 2px solid ${color.darkGgeen};
   border-style: dashed;
 
-  /* border-image: repeating-linear-gradient(0deg, ${color.darkGreen}, ${color.darkGreen} 5px, transparent 5px, transparent 10px); */
+  @media (max-width: 500px) {
+    padding: 10px 5px;
+  }  
 `
 
 export const IndividualContainerBenefits = styled.div`
@@ -134,9 +126,7 @@ export const DataFigures = styled.p`
   font-size: 28px;
   font-weight: 500;
   line-height: 1.14;
-
-  margin-right: 16px;
- 
+  margin-right: 16px; 
 `
 
 
@@ -144,6 +134,7 @@ export const SmallTitleFirstTwo  = styled.p`
   width: 96px;
   line-height: 1.29;
 `
+
 export const SmallTitleSecondTwo  = styled.p`
   width: 74px;
   line-height: 1.29;

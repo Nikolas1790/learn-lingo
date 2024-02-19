@@ -13,6 +13,6 @@ export const FavoritePageContainer = styled.div`
     align-items: start;
     flex-Direction: column;
     padding:64px 128px 96px 128px;
-    width: 1440px;
+    max-width: 1440px;
     background: ${color.whiteDarker};;
 `

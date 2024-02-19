@@ -1,4 +1,4 @@
-import { ActiveGreenSvg, BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn, Divider, FullName, ImgCard, ImgCardConteiner, InformCardConteiner, LanguagesUnderlined, LessonsOnline, LevelLanguage, LevelsList, MainInfBlock, Price, Rating, ReadMoreBtn, Subtitle, TrialLessonBtn, WraperCard } from "./TeacherCard.styled";
+import { ActiveGreenSvg, BlockShortInformationsTeacher, BlockSkills, BorderImgCard, CardHeartBtn, Divider, FullName, ImgCard, ImgCardConteiner, InformCardConteiner, InformShortCardConteiner, LanguagesUnderlined, LessonsOnline, LevelLanguage, LevelsList, MainInfBlock, Price, Rating, ReadMoreBtn, Subtitle, TrialLessonBtn, WraperCard } from "./TeacherCard.styled";
 import sprite from '../../img/svg-file.svg';
 import { useEffect, useState } from "react";
 import EducationalBkg from "components/EducationalBkg/EducationalBkg";
@@ -75,7 +75,7 @@ import { onAuthStateChanged } from "firebase/auth";
             <InformCardConteiner>
                 <MainInfBlock>
                   <Subtitle>Languages</Subtitle>      
-
+        <InformShortCardConteiner>
                   <LessonsOnline>
                     <svg width={16} height={16}>
                       <use href={`${sprite}#icon-book-open`} />
@@ -93,6 +93,7 @@ import { onAuthStateChanged } from "firebase/auth";
                   </Rating>
                   <Divider />
                   <p>Price / 1 hour: <Price> {teacher.price_per_hour}$</Price></p>
+          </InformShortCardConteiner>
                     
                 </MainInfBlock>
 

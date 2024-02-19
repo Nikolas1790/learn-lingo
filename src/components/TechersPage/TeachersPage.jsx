@@ -1,8 +1,9 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
-import { BtnLoadMore, TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
+import {  TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
 import TeacherCard from "components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
 import { getDatabase, ref, get } from 'firebase/database';
+import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 // const a = [
 //   {
 //     "name": "John",
@@ -175,7 +176,7 @@ import { getDatabase, ref, get } from 'firebase/database';
               ))}
             </ul>
             {teachers.length < visibleTeachers ? null : (
-               <BtnLoadMore onClick={handleLoadMore}>Load more</BtnLoadMore>
+               <BtnLoadMore  handleLoadMore={handleLoadMore} />
             )}
         </TeachersPageContainer> 
       </WraperBox>  

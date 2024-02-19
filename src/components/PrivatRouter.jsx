@@ -13,6 +13,6 @@ export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
 
     return () => unsubscribe();
   }, [auth]);
-console.log(isLoggedIn)
+// console.log(isLoggedIn)
   return isLoggedIn ? Component : <Navigate to={redirectTo} /> ;
 };

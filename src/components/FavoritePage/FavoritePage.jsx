@@ -1,24 +1,33 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
 import { FavoritePageContainer, WraperBox } from "./FavoritePage.style";
 import TeacherCard from "components/TeacherCard/TeacherCard";
-import { BtnLoadMore } from "components/TechersPage/TeachersPage.styled";
 import { auth } from '../../firebase';
 import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
+
 
 export default function FavoritePage() {
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
+  // const [allFavorits, setallFavorits] = useState([]);
 
   useEffect(() => {
-    const userId = auth.currentUser?.uid;
-    const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-    
-    // console.log(v)
-    if (storedFavorites.length !== visibleTeachers) {
-      
-      setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userId = user.uid;
+        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+        // if (JSON.stringify(allFavorits) !== JSON.stringify(storedFavorites)) {
+        //   setallFavorits(storedFavorites);
+        // }
+        console.log(storedFavorites);
+        setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
+      }
+    });
+  
+    return () => unsubscribe(); 
   }, [visibleTeachers]);
+
 
   const handleLoadMore = () => {
     const userId = auth.currentUser?.uid;
@@ -42,8 +51,8 @@ export default function FavoritePage() {
                 <TeacherCard key={index} teacher={teacher} />
               ))}
             </ul>
-            {favoriteTeachers.length <= visibleTeachers ? null : (
-               <BtnLoadMore onClick={handleLoadMore}>Load more</BtnLoadMore>
+            {favoriteTeachers.length < visibleTeachers  ? null : (
+               <BtnLoadMore  handleLoadMore={handleLoadMore} />
             )}
         </FavoritePageContainer> 
       </WraperBox>  
