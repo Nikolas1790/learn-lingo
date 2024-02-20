@@ -1,22 +1,19 @@
 import color from 'common/GlobalColers'
 import styled from 'styled-components'
 
-export const WrapperLogOutBlock = styled.div`
+export const WrapperBlock = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px; 
-
 `
-
 
 export const Name = styled.p`
   font-weight: 500;
-  line-height: 20px;
- 
+  line-height: 20px; 
 `
 
-export const BtnLogOut = styled.button`
+export const BtnLogOutAndRegistration = styled.button`
   display: flex;
   align-items: center;
  
@@ -34,5 +31,16 @@ export const BtnLogOut = styled.button`
     background:  ${color.darkGgeen};  
     color: ${color.blackPrimary};  
   }
+`
+
+export const BtnLogIn = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: transparent;
+
+  font-weight: 700;
+  font-size: 16px;
 
 `
