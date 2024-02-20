@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Dropdown, DropdownButton, DropdownItem, DropdownList, TitleMenu, WraperMenu } from "./FilterMenu.styled";
-// import { useState, useEffect } from "react";
 import { getDatabase, ref, get } from 'firebase/database';
 
 // const languages = ["French", "English", "Mandarin Chinese"];

@@ -1,8 +1,6 @@
 import React  from 'react'
 import sprite from '../../img/svg-file.svg';
-import { BtnLogIn, BtnLogOutAndRegistration, WrapperAuthorizationMenu, WrapperBlock } from './LogInLogOutStyled/LogInLogOut.styled';
-
-
+import { BtnLogIn, BtnLogOutAndRegistration, WrapperBlock } from './LogInLogOutStyled/LogInLogOut.styled';
 
 export default function LogInBlock({openLoginModal, openRegisterModal}) {
     return (

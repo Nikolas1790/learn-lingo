@@ -2,9 +2,8 @@ import { auth } from '../../firebase'
 import { signOut } from 'firebase/auth'
 import React  from 'react'
 import sprite from '../../img/svg-file.svg';
-// import { BtnLogOut, Name, WrapperLogOutBlock } from './LogOutBlock.styled';
 import { useAuth } from 'components/AuthProvider/AuthProvider';
-import {  BtnLogOutAndRegistration, Name, WrapperBlock, WrapperLogOutBlock } from './LogInLogOutStyled/LogInLogOut.styled';
+import {  BtnLogOutAndRegistration, Name, WrapperBlock } from './LogInLogOutStyled/LogInLogOut.styled';
 
 
 export default function LogOutBlock() {

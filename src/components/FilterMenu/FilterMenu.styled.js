@@ -5,6 +5,11 @@ export const WraperMenu = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 32px;
+min-width: 1184px;
+
+@media (max-width: 1260px) {
+  min-width: auto;
+  };
 
 `
 

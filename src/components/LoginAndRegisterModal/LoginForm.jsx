@@ -21,15 +21,9 @@ export default function LoginForm({ onSubmit, closeModals }) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
-
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
-    // if (showPassword === false) {
-    //   setShowPassword(true);
-    // }
-    // if (showPassword === true) {
-    //   setShowPassword(false);
-    // }
+
   };
   
   const handleSubmit = async (values, {resetForm}) => {

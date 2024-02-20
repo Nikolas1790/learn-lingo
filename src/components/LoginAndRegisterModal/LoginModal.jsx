@@ -1,17 +1,34 @@
-import { BtnClose,  Modal, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
+import { BtnClose, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
 import sprite from '../../img/svg-file.svg';
 import LoginForm from "./LoginForm";
+import { useEffect } from "react";
 
 export default function LoginModal({closeModals}) {
+  useEffect(() => {
+    
+    const closeModalOnEscape = (e) => {
+      if (e.key === 'Escape') {
+        // console.log("ggggggggggggg")
+        e.stopPropagation();
+        closeModals();
+      }
+    };
+  
+    document.addEventListener('keydown', closeModalOnEscape);
+  
+    return () => {
+      document.removeEventListener('keydown', closeModalOnEscape);
+    };
+  }, [closeModals]);
 
   const handleLogin = (values) => {
     // Реализуйте логику для отправки данных на сервер или другую необходимую обработку
-    console.log(values);
+    // console.log(values);
     closeModals();
   };
   
     return (
-      <Modal>
+      // <Modal>
         <WrapperModal>
           <BtnClose onClick={closeModals}>
             <svg width={32} height={32}  >
@@ -24,6 +41,6 @@ export default function LoginModal({closeModals}) {
 
           <LoginForm onSubmit={handleLogin} closeModals={closeModals}/>          
         </WrapperModal>
-      </Modal>
+      // </Modal>
     );
 }

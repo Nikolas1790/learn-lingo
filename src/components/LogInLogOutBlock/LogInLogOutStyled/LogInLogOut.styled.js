@@ -16,8 +16,10 @@ export const Name = styled.p`
 export const BtnLogOutAndRegistration = styled.button`
   display: flex;
   align-items: center;
- 
-  padding: 14px 39px;
+  justify-content: center;
+ width: 168px;
+ height: 48px;
+  // padding: 14px 39px;
   color: ${color.whitePrimary};
   background: ${color.blackPrimary};
 
@@ -30,6 +32,10 @@ export const BtnLogOutAndRegistration = styled.button`
   &:focus {
     background:  ${color.darkGgeen};  
     color: ${color.blackPrimary};  
+  }
+
+  &:active {
+    background: linear-gradient(to bottom, ${color.darkGgeen}, ${color.lightGreene});
   }
 `
 

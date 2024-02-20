@@ -32,6 +32,11 @@ export const WrapperModal = styled.div`
   background-color: ${color.whitePrimary};
   border-radius: 30px;
   padding: 64px;
+
+  @media (max-width: 482px) {
+    padding: 30px;
+  };
+
 `
 export const WrapperModalTrail = styled.div`
   position: fixed;
