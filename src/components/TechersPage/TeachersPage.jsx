@@ -169,7 +169,7 @@ import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
     return (   
       <WraperBox>
         <TeachersPageContainer>            
-            <FilterMenu />
+            <FilterMenu setTeachers={setTeachers} />
             <ul>
               {teachers.map((teacher, index) => (
                 <TeacherCard key={index} teacher={teacher} />

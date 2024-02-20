@@ -38,7 +38,7 @@ font-size: 18px;
   padding: 10px;
   /* border: 1px solid red; */
 
-  width: ${props => props.width || '221px'};
+  min-width: ${props => props.width || '221px'};
 `;
 
 export const DropdownList = styled.ul`
