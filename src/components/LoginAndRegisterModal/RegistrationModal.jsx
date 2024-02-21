@@ -5,13 +5,11 @@ import RegistrationForm from "./RegistrationForm";
 export default function RegistrationModal({closeModals}) {
 
   const handleLogin = (values) => {
-    // Реализуйте логику для отправки данных на сервер или другую необходимую обработку
-    console.log(values);
+    // console.log(values);
     closeModals();
   };
 
   return (
-    // <Modal>
     <WrapperModal>
       <BtnClose onClick={closeModals}>
         <svg width={32} height={32}  >
@@ -24,7 +22,6 @@ export default function RegistrationModal({closeModals}) {
 
       <RegistrationForm onSubmit={handleLogin} closeModals={closeModals}/>          
     </WrapperModal>
-    // </Modal>
   );
 }
 

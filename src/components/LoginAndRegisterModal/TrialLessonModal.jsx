@@ -49,7 +49,6 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
     //   };
 
   return (
-    // <Modal>
         <WrapperModalTrail style={{ top: modalTop }} id="modal">
             <BtnClose onClick={closeModals}>
                 <svg width={32} height={32}  >
@@ -77,9 +76,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                         await new Promise((r) => setTimeout(r, 500));
                         setFieldValue('picked', values.picked);
                         resetForm();
-                        // alert(JSON.stringify(values, null, 2));
-                     
-                        setSelectedOption(values.picked)
+                        setSelectedOption(null)
                         closeModals()
                     }}
                 >
@@ -177,6 +174,5 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                 </Formik>
             </div>
         </WrapperModalTrail>
-    // </Modal>
   );
 }

@@ -64,38 +64,16 @@ export const WrapperModalTrail = styled.div`
     border-radius: 12px;
   };
 `
-// export const WrapperModalTrail = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 50%;
-//   z-index: 2;
-//   transform: translateX(-50%);
-
-//   max-width: 600px;
-
-//   background-color: ${color.whitePrimary};
-//   border-radius: 30px;
-//   padding: 64px;
-//   @media (max-width: 482px) {
-//     padding: 30px;
-//   };
-// `;
-
 
 export const BtnClose = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  /* width: 100px; */
-  /* height: 100px; */
-
   display: flex;
   justify-content: center;
   align-items: center;
   stroke: ${color.blackPrimary};
   background: transparent;
- 
-
 `;
 
 /////////////////////////////////////////////////////
@@ -105,7 +83,6 @@ export const ModalTitle = styled.h2`
   font-size: 40px;
   line-height: 1.2;
   margin-bottom: 20px;
-  /* letter-spacing: 1.4; */
 `;
 
 export const ModalText = styled.p`

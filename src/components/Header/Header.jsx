@@ -10,27 +10,18 @@ import PortalModal from "components/PortalModal/PortalModal";
 
 export default function Header() {
     const [modalActive, setModalActive] = useState(false);
-
-    // const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
-
     const { authUser, loading } = useAuth();
  
     const openLoginModal = () => {
-        // setLoginModalOpen(true);
         setModalActive(true)
-        setRegisterModalOpen(false); // Закрываем окно регистрации, если открыто
+        setRegisterModalOpen(false);
     };
 
     const openRegisterModal = () => {
         setRegisterModalOpen(true);
-        // setLoginModalOpen(false); // Закрываем окно логина, если открыто
     };
-    // const closeModals = () => {
-    //     // setLoginModalOpen(false);
-    //     setRegisterModalOpen(false);
-    //     setModalActive(false)
-    // };
+    
     return (
         <HeaderContainer>
             <Logo />
@@ -41,23 +32,17 @@ export default function Header() {
                 { authUser && <StyledNavigation to="/favorites">Favorites</StyledNavigation>}
             </HeaderNav>
 
-            {/* {loginModalOpen && <LoginModal closeModals={closeModals} />} */}
-            {/* {registerModalOpen && <RegistrationModal closeModals={closeModals} />} */}
-
            { loading ? null : authUser ?
             <LogOutBlock /> :
             <LogInBlock openLoginModal={openLoginModal} openRegisterModal={openRegisterModal}/>}
 
 
-
             <PortalModal active={registerModalOpen} setActive={setRegisterModalOpen}>
                 <RegistrationModal closeModals={() => setRegisterModalOpen()} />
             </PortalModal>
-
             <PortalModal active={modalActive} setActive={setModalActive}>
                 <LoginModal closeModals={() => setModalActive()} />
             </PortalModal>
-
         </HeaderContainer>
     );
 };
