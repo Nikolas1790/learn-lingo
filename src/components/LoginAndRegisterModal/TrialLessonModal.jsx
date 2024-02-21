@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../img/svg-file.svg';
@@ -22,13 +22,35 @@ const schema = Yup.object({
 
 export default function TrialLessonModal({closeModals, fullName, img}) {
     const [selectedOption, setSelectedOption] = useState(null);
-    const handleRadioChange = (value) => {
-        setSelectedOption(value);
+    const [modalTop, setModalTop] = useState('50%');
+
+    useEffect(() => {
+      const handleResize = () => {
+        const modalHeight = document.getElementById('modal').offsetHeight;
+        const viewportHeight = window.innerHeight;
+  
+        if (modalHeight > viewportHeight) {
+          setModalTop('0');
+        } else {
+          setModalTop('50%');
+        }
       };
+  
+      window.addEventListener('resize', handleResize);
+      handleResize();
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+  
+    // const handleRadioChange = (value) => {
+    //     setSelectedOption(value);
+    //   };
 
   return (
     // <Modal>
-        <WrapperModalTrail>
+        <WrapperModalTrail style={{ top: modalTop }} id="modal">
             <BtnClose onClick={closeModals}>
                 <svg width={32} height={32}  >
                     <use href={`${sprite}#icon-x`} />
@@ -73,7 +95,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                  }   
                                     <GreenRadio type="radio" name="picked" value="Career and business"  onChange={() => {
                                         setFieldValue('picked', 'careerBusiness');
-                                        handleRadioChange('careerBusiness')}}/>
+                                        setSelectedOption('careerBusiness')}}/>
                                     
                                     Career and business
                                 </LabelRadio>
@@ -85,7 +107,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                      }
                                     <GreenRadio type="radio" name="picked" value="Lesson for kids" onChange={() => {
                                         setFieldValue('picked', 'lessonForKids');
-                                        handleRadioChange('lessonForKids')}} />
+                                        setSelectedOption('lessonForKids')}} />
                                     Lesson for kids
                                 </LabelRadio>
                                 <LabelRadio>
@@ -96,7 +118,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                  }
                                     <GreenRadio type="radio" name="picked" value="Living abroad"  onChange={() => {
                                         setFieldValue('picked', 'livingAbroad');
-                                        handleRadioChange('livingAbroad')}} />
+                                        setSelectedOption('livingAbroad')}} />
                                     Living abroad
                                 </LabelRadio>
                                 <LabelRadio>
@@ -107,7 +129,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                      }
                                     <GreenRadio type="radio" name="picked" value="Exams and coursework" onChange={() => {
                                         setFieldValue('picked', 'exams');
-                                        handleRadioChange('exams')}}  />
+                                        setSelectedOption('exams')}}  />
                                     Exams and coursework
                                 </LabelRadio>
                                 <LabelRadio>
@@ -118,7 +140,7 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                                      }
                                     <GreenRadio type="radio" name="picked" value="Culture, travel or hobby"  onChange={() => {
                                         setFieldValue('picked', 'culture');
-                                        handleRadioChange('culture')}} />
+                                        setSelectedOption('culture')}} />
                                     Culture, travel or hobby
                                 </LabelRadio>
                                 </FormGroup>

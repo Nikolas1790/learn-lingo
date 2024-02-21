@@ -40,23 +40,28 @@ export const WrapperModal = styled.div`
 `
 export const WrapperModalTrail = styled.div`
   position: fixed;
-  top: 50%;
+  top: ${(props) => (props.top === '0' ? '0' : '50%')};
   left: 50%;
   z-index: 2;
-  transform: translate(-50%, -50%);
-
+  transform: translate(-50%, ${(props) => (props.top === '0' ? '0' : '-50%')});
   max-width: 600px;
-
 
   background-color: ${color.whitePrimary};
   border-radius: 30px;
   padding: 64px;
-  /* height: 100%;  */
-  /* overflow-y: auto; */
 
+  max-height: 100%; 
+  overflow-y: auto;
+
+  scrollbar-width: thin; 
+  scrollbar-color: transparent transparent; 
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
   
   @media (max-width: 482px) {
     padding: 30px;
+    border-radius: 12px;
   };
 `
 // export const WrapperModalTrail = styled.div`
