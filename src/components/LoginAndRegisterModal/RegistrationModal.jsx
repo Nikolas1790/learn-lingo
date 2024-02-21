@@ -1,4 +1,4 @@
-import { BtnClose,  Modal, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
+import { BtnClose, ModalText, ModalTitle, WrapperModal } from "./LoginAndRegisterStyled/Modal.styled";
 import sprite from '../../img/svg-file.svg';
 import RegistrationForm from "./RegistrationForm";
 
@@ -11,7 +11,7 @@ export default function RegistrationModal({closeModals}) {
   };
 
   return (
-    <Modal>
+    // <Modal>
     <WrapperModal>
       <BtnClose onClick={closeModals}>
         <svg width={32} height={32}  >
@@ -24,7 +24,7 @@ export default function RegistrationModal({closeModals}) {
 
       <RegistrationForm onSubmit={handleLogin} closeModals={closeModals}/>          
     </WrapperModal>
-    </Modal>
+    // </Modal>
   );
 }
 

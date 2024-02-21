@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import {  Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../img/svg-file.svg';
-import { BtnClose, CheckBoxActive, CheckBoxActiveWrapper, FormGroup, GreenRadio, LabelRadio, Modal,  ModalTextTrail, ModalTitle, TitleOfRadioBtns, WrapperModalTrail, YourTeacher, YourTeacherBlock, YourTeacherImg, YourTeacherNane } from './LoginAndRegisterStyled/Modal.styled';
+import { BtnClose, CheckBoxActive, CheckBoxActiveWrapper, FormGroup, GreenRadio, LabelRadio,  ModalTextTrail, ModalTitle, TitleOfRadioBtns, WrapperModalTrail, YourTeacher, YourTeacherBlock, YourTeacherImg, YourTeacherNane } from './LoginAndRegisterStyled/Modal.styled';
 import {  FormBtn, FormField, FormFieldPassvord, FormFields } from './LoginAndRegisterStyled/Form.styled';
 import { ErrorMessagePassword, ErrorMessageStyled } from 'components/TechersPage/TeachersPage.styled';
-
-// import radioButton from '../../img/RadioButton.jpg';
-
-
 
 const initialValues = {
     picked: '',
@@ -30,14 +26,8 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
         setSelectedOption(value);
       };
 
-//   const handleLogin = (values) => {
-//     // Реализуйте логику для отправки данных на сервер или другую необходимую обработку
-//     console.log(values);
-//     closeModals();
-//   };
-
   return (
-    <Modal>
+    // <Modal>
         <WrapperModalTrail>
             <BtnClose onClick={closeModals}>
                 <svg width={32} height={32}  >
@@ -165,6 +155,6 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
                 </Formik>
             </div>
         </WrapperModalTrail>
-    </Modal>
+    // </Modal>
   );
 }

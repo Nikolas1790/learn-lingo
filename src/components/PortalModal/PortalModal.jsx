@@ -14,21 +14,17 @@ export default function PortalModal({ active, setActive, children }) {
 
     const handleBodyScroll = (disableScroll) => {
         // console.log('handleBodyScroll disableScroll:', disableScroll);
-      if (disableScroll) {
-        
+      if (disableScroll) {        
         document.body.classList.add('no-scroll');
-      } else {
-        
+      } else {        
         document.body.classList.remove('no-scroll');
       }
     };
 
-    if (active) {
-        
+    if (active) {        
       document.addEventListener('keydown', closeModal);
       handleBodyScroll(true);
-    } else {
-        
+    } else {        
       document.removeEventListener('keydown', closeModal);
       handleBodyScroll(false);
     }

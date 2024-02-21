@@ -26,11 +26,11 @@ export default function Header() {
         setRegisterModalOpen(true);
         // setLoginModalOpen(false); // Закрываем окно логина, если открыто
     };
-    const closeModals = () => {
-        // setLoginModalOpen(false);
-        setRegisterModalOpen(false);
-        setModalActive(false)
-    };
+    // const closeModals = () => {
+    //     // setLoginModalOpen(false);
+    //     setRegisterModalOpen(false);
+    //     setModalActive(false)
+    // };
     return (
         <HeaderContainer>
             <Logo />
@@ -42,7 +42,7 @@ export default function Header() {
             </HeaderNav>
 
             {/* {loginModalOpen && <LoginModal closeModals={closeModals} />} */}
-            {registerModalOpen && <RegistrationModal closeModals={closeModals} />}
+            {/* {registerModalOpen && <RegistrationModal closeModals={closeModals} />} */}
 
            { loading ? null : authUser ?
             <LogOutBlock /> :
@@ -50,17 +50,14 @@ export default function Header() {
 
 
 
+            <PortalModal active={registerModalOpen} setActive={setRegisterModalOpen}>
+                <RegistrationModal closeModals={() => setRegisterModalOpen()} />
+            </PortalModal>
 
-        <PortalModal active={modalActive} setActive={setModalActive}>
-            <LoginModal closeModals={closeModals}   />
-        </PortalModal>
-
-
-        {/* <PortalModal active={modalActive} setActive={setModalActive}>
-            <LoginModal closeModals={() => setModalActive()}   />
-        </PortalModal> */}
-
+            <PortalModal active={modalActive} setActive={setModalActive}>
+                <LoginModal closeModals={() => setModalActive()} />
+            </PortalModal>
 
         </HeaderContainer>
     );
-  };
+};

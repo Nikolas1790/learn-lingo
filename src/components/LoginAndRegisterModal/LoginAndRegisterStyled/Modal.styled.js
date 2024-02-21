@@ -2,21 +2,21 @@ import color from 'common/GlobalColers';
 import { Field } from 'formik';
 import styled from 'styled-components';
 
-export const Modal = styled.div`
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+// export const Modal = styled.div`
+//   display: block;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   align-items: center;
+//   justify-content: center;
 
-  display: flex;
-   z-index:5;
-   background: rgba(25, 26, 21, 0.6);
+//   display: flex;
+//    z-index:5;
+//    background: rgba(25, 26, 21, 0.6);
 
-`;
+// `;
 
 export const WrapperModal = styled.div`
   position: fixed;
@@ -51,7 +51,30 @@ export const WrapperModalTrail = styled.div`
   background-color: ${color.whitePrimary};
   border-radius: 30px;
   padding: 64px;
+  /* height: 100%;  */
+  /* overflow-y: auto; */
+
+  
+  @media (max-width: 482px) {
+    padding: 30px;
+  };
 `
+// export const WrapperModalTrail = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 50%;
+//   z-index: 2;
+//   transform: translateX(-50%);
+
+//   max-width: 600px;
+
+//   background-color: ${color.whitePrimary};
+//   border-radius: 30px;
+//   padding: 64px;
+//   @media (max-width: 482px) {
+//     padding: 30px;
+//   };
+// `;
 
 
 export const BtnClose = styled.button`

@@ -5,10 +5,12 @@ import EducationalBkg from "components/EducationalBkg/EducationalBkg";
 import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal";
 import { auth } from '../../firebase';
 import { onAuthStateChanged } from "firebase/auth";
+import PortalModal from "components/PortalModal/PortalModal";
 
-  export default function TeacherCard({teacher}) {
+export default function TeacherCard({teacher}) {
     const [expanded, setExpanded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
+
     const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
 
     useEffect(() => {
@@ -26,10 +28,10 @@ import { onAuthStateChanged } from "firebase/auth";
     const openLoginModal = () => {
       setTrailLessonModalOpen(true);
     };
-    const closeModals = () => {
-      // console.log('Closing modals');
-      setTrailLessonModalOpen(false);
-  };
+  //   const closeModals = () => {
+  //     // console.log('Closing modals');
+  //     setTrailLessonModalOpen(false);
+  // };
     const handleReadMoreClick = () => {
       setExpanded((prevExpanded) => !prevExpanded);
     };
@@ -130,8 +132,16 @@ import { onAuthStateChanged } from "firebase/auth";
 
                 {expanded && <TrialLessonBtn onClick={openLoginModal}  >Book trial lesson</TrialLessonBtn>}
                 
-                {trailLessonModalOpen && <TrialLessonModal closeModals={closeModals} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />}
+                {/* {trailLessonModalOpen && <TrialLessonModal closeModals={closeModals} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />} */}
+
+
+                <PortalModal active={trailLessonModalOpen} setActive={setTrailLessonModalOpen}>
+                  <TrialLessonModal closeModals={() => setTrailLessonModalOpen()} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />
+                  {/* <RegistrationModal closeModals={() => setRegisterModalOpen()} /> */}
+                </PortalModal>
+
+
             </InformCardConteiner>
         </WraperCard>      
     );
-  }
+}
