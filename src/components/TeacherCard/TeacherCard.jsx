@@ -7,14 +7,12 @@ import { auth } from '../../firebase';
 import { onAuthStateChanged } from "firebase/auth";
 import PortalModal from "components/PortalModal/PortalModal";
 
-export default function TeacherCard({teacher}) {
+export default function TeacherCard({teacher, handleFavorite, sourceComponent }) {
     const [expanded, setExpanded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
-
     const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
 
     useEffect(() => {
-      // Подписываемся на события изменения статуса аутентификации
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         const userId = user?.uid;
         const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
@@ -28,10 +26,6 @@ export default function TeacherCard({teacher}) {
     const openLoginModal = () => {
       setTrailLessonModalOpen(true);
     };
-  //   const closeModals = () => {
-  //     // console.log('Closing modals');
-  //     setTrailLessonModalOpen(false);
-  // };
     const handleReadMoreClick = () => {
       setExpanded((prevExpanded) => !prevExpanded);
     };
@@ -46,12 +40,17 @@ export default function TeacherCard({teacher}) {
   
         if (newIsFavorite) {
           localStorage.setItem(`favorites-${userId}`, JSON.stringify([...storedFavorites, teacher]));
+          
         } else {
           const updatedFavorites = storedFavorites.filter((fav) => fav.avatar_url !== teacher.avatar_url);
           localStorage.setItem(`favorites-${userId}`, JSON.stringify(updatedFavorites));
+
+          if (sourceComponent === "FavoritePage") {
+            handleFavorite()
+          }
         }        
       } else {
-        alert("Для добавления в избранное вам необходимо войти в систему.");
+        alert("To add to favorites you must be logged in.");
       }
     };
 
@@ -119,8 +118,7 @@ export default function TeacherCard({teacher}) {
                 </BlockSkills>
 
                 {expanded && <EducationalBkg experience={teacher.experience} reviews={teacher.reviews}/>}
-                {!expanded  && <ReadMoreBtn onClick={handleReadMoreClick}>Read more</ReadMoreBtn>}            
-                
+                {!expanded  && <ReadMoreBtn onClick={handleReadMoreClick}>Read more</ReadMoreBtn>}                      
 
                 <LevelsList>
                     {teacher.levels.map((language) => (
@@ -130,17 +128,11 @@ export default function TeacherCard({teacher}) {
                     ))}
                 </LevelsList>
 
-                {expanded && <TrialLessonBtn onClick={openLoginModal}  >Book trial lesson</TrialLessonBtn>}
-                
-                {/* {trailLessonModalOpen && <TrialLessonModal closeModals={closeModals} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />} */}
-
-
+                {expanded && <TrialLessonBtn onClick={openLoginModal} >Book trial lesson</TrialLessonBtn>}
+               
                 <PortalModal active={trailLessonModalOpen} setActive={setTrailLessonModalOpen}>
                   <TrialLessonModal closeModals={() => setTrailLessonModalOpen()} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />
-                  {/* <RegistrationModal closeModals={() => setRegisterModalOpen()} /> */}
                 </PortalModal>
-
-
             </InformCardConteiner>
         </WraperCard>      
     );

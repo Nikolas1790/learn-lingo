@@ -172,7 +172,7 @@ import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
             <FilterMenu setTeachers={setTeachers} />
             <ul>
               {teachers.map((teacher, index) => (
-                <TeacherCard key={index} teacher={teacher} />
+                <TeacherCard key={index} teacher={teacher}  />
               ))}
             </ul>
             {teachers.length < visibleTeachers ? null : (

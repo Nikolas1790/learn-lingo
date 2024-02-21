@@ -5,6 +5,7 @@ import { auth } from '../../firebase';
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
+import EmptyFavoritesList from "components/EmptyFavoritesList/EmptyFavoritesList";
 
 
 export default function FavoritePage() {
@@ -19,10 +20,6 @@ export default function FavoritePage() {
       if (user) {
         const userId = user.uid;
         const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-        // if (JSON.stringify(allFavorits) !== JSON.stringify(storedFavorites)) {
-        //   setallFavorits(storedFavorites);
-        // }
-        // console.log(storedFavorites);
         setallFavorits(storedFavorites)
         setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
       }
@@ -42,43 +39,38 @@ export default function FavoritePage() {
     setFavoriteTeachers((prevTeachers) => [...prevTeachers, ...newVisibleTeachers]);
     setVisibleTeachers((prevVisibleTeachers) => prevVisibleTeachers + 4);
   };
-  // console.log(favoriteTeachers.length)
-
+  const handleFavorite = (e) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userId = user.uid;
+        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+        setallFavorits(storedFavorites)
+        setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
+      }
+    });
+  };
     return (   
       <WraperBox>
         <FavoritePageContainer>
-
             <FilterMenu setTeachers={setTeachers} />
             
+            { !favoriteTeachers.length && <EmptyFavoritesList /> }
+
             <ul>
-            {favoriteTeachers.map((teacher, index) => {
-            const isTeacherInList = teachers.some(t => t.avatar_url === teacher.avatar_url);           
-            // Рендерим только если учитель есть в массиве teachers
-            // console.log(allFavorits.length)
-            // console.log(visibleTeachers)
-
-              if (teachers.length === 0 || isTeacherInList) {
-                return <TeacherCard key={index} teacher={teacher} />;
-              }        
-            return null;
-          })}
-              {/* {favoriteTeachers.map((teacher, index) => (
-                <TeacherCard key={index} teacher={teacher} />
-              ))} */}
-
+              {favoriteTeachers.map((teacher, index) => {
+                const isTeacherInList = teachers.some(t => t.avatar_url === teacher.avatar_url);  
+                  if (teachers.length === 0 || isTeacherInList) {
+                    return <TeacherCard key={index} teacher={teacher} handleFavorite={handleFavorite} sourceComponent="FavoritePage" />;
+                  }        
+                return null;
+              })}
             </ul>
 
             {favoriteTeachers.length < visibleTeachers  || allFavorits.length === visibleTeachers ? null : (
                <BtnLoadMore  handleLoadMore={handleLoadMore} />
             )}
-
-                        {/* {favoriteTeachers.length < visibleTeachers  ? (
-              allFavorits.length === visibleTeachers ? null : <BtnLoadMore handleLoadMore={handleLoadMore} />) : (
-               <BtnLoadMore  handleLoadMore={handleLoadMore} />
-            )} */}
         </FavoritePageContainer> 
-      </WraperBox>  
-    
+      </WraperBox>      
     );
 }
   

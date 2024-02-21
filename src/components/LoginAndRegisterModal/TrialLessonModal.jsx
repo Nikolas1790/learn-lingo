@@ -44,8 +44,9 @@ export default function TrialLessonModal({closeModals, fullName, img}) {
       };
     }, []);
   
-    // const handleRadioChange = (value) => {
-    //     setSelectedOption(value);
+    // function handleCloseBtn() {
+    //     closeModals();
+    //     console.log("hhhhhhh")
     //   };
 
   return (

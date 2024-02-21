@@ -22,7 +22,7 @@ export const CardHeartBtn = styled.button`
   align-items: center;
   width: 18px;
   height: 18px;
-  stroke: ${color.blackPrimary};
+   ${color.blackPrimary};
   background: transparent;
 `;
 
