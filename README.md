@@ -24,12 +24,15 @@ This project is a web application designed for users to explore and choose langu
 ## Technical task
 
 Create an application for a company offering to use the services of online language teachers. The application consists of 3 pages:
-• a “Home” page with a list of company benefits and a link to start working with the application and redirects to the “Teachers” page. Stylization should be implemented using the examples given in the layout with different variations of the palette, or with the help of a prototype (which will make the "project" more unique).
+
+• a “Home” page with a list of company benefits and a link to start working with the application and redirects to the “Teachers” page. Stylization should be implemented using the examples given in the [layout](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/%D0%9F%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%9A%D0%A6?type=design&node-id=0-1&mode=design&t=jCmjSs9PeOjObYSc-0) with different variations of the palette, or with the help of a prototype (which will make the "project" more unique).
+
 • the "Teachers" page, which contains a list of teachers that the user can filter by the language of teaching, by the level of knowledge of the students with whom the teacher works and the price per hour of class.
+
 • private page "Favorites" with teachers who were added by the user to "favorites"
 
 Technical task
-1. With the help of firebase_DB, add the possibility of authorization to the application (registration, login, obtaining data about the current user, logout).
+1. With the help of [firebase_DB](https://firebase.google.com/), add the possibility of authorization to the application (registration, login, obtaining data about the current user, logout).
 2. The form for registration/authorization and minimal validation of its fields should be implemented using formik & yup. All fields are mandatory. The modal window with the form should be closed by clicking on the button in the form of a "cross", by clicking on the backdrop or pressing the Esc key.
 3. In Realtime Database (by firebase), create a collection of teachers with the following fields: name, surname, languages, levels, rating, reviews, price_per_hour, lessons_done, avatar_url, lesson_info, conditions, experience.
 4. According to the [layout](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/%D0%9F%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82-%D0%B4%D0%BB%D1%8F-%D0%9A%D0%A6?type=design&node-id=0-1&mode=design&t=jCmjSs9PeOjObYSc-0), implement a card with a description of the teacher's characteristics.
@@ -50,13 +53,21 @@ Add filtering: by language of instruction; according to the level of knowledge o
 
 
 Performance criteria
+
 ● Layout from 320x to 1440x rubber, semantic and valid.
+
 ● No errors in the browser console.
+
 ● The work is done on native JS using a bundler (Vite, Parcel, etc.) or on React.
+
 ● User authorization and working with the collection are implemented using firebase
+
 ● Interactivity works according to the specification.
+
 ● The code is formatted and uncommented.
+
 ● The repository should have a README.md with a description of the project: what this project is about, the main technologies, layout, TK.
+
 ● The project is deployed on github pages, netlify.com or other third-party hosting
 
 
