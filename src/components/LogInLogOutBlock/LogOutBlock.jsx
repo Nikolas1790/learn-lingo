@@ -9,12 +9,9 @@ import {  BtnLogOutAndRegistration, Name, WrapperBlock } from './LogInLogOutStyl
 export default function LogOutBlock() {
   const { authUser } = useAuth();
 
-    function userSignOut() {
-        signOut(auth)
-        // window.location.reload();
-        // .then(() => console.log("success"))
-        // .catch((e) => console.log(e))
-    }
+  function userSignOut() {
+    signOut(auth)
+  }
   return (
     <WrapperBlock>                      
       <svg width={40} height={40}>

@@ -19,7 +19,6 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
-  /* letter-spacing: 1; */
   color: ${color.blackPrimary};
   width: 100%;
   height: 100vh;

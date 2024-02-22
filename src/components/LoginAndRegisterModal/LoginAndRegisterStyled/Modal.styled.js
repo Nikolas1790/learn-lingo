@@ -2,22 +2,6 @@ import color from 'common/GlobalColers';
 import { Field } from 'formik';
 import styled from 'styled-components';
 
-// export const Modal = styled.div`
-//   display: block;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   align-items: center;
-//   justify-content: center;
-
-//   display: flex;
-//    z-index:5;
-//    background: rgba(25, 26, 21, 0.6);
-
-// `;
-
 export const WrapperModal = styled.div`
   position: fixed;
   top: 50%;
@@ -26,7 +10,6 @@ export const WrapperModal = styled.div`
   transform: translate(-50%, -50%);
 
   max-width: 566px;
-  /* width: 566px; */
   min-height: 506px; 
 
   background-color: ${color.whitePrimary};
@@ -36,7 +19,6 @@ export const WrapperModal = styled.div`
   @media (max-width: 482px) {
     padding: 30px;
   };
-
 `
 export const WrapperModalTrail = styled.div`
   position: fixed;
@@ -76,8 +58,6 @@ export const BtnClose = styled.button`
   background: transparent;
 `;
 
-/////////////////////////////////////////////////////
-
 export const ModalTitle = styled.h2`
   font-weight: 500;
   font-size: 40px;
@@ -89,7 +69,7 @@ export const ModalText = styled.p`
   font-size: 16px;
 
   margin-bottom: 40px;
-  color: rgba(18, 20, 23, 0.8);
+  color: ${color.gryeDark};
   letter-spacing: 1.4;  
 `;
 
@@ -97,7 +77,7 @@ export const ModalTextTrail = styled.p`
   font-size: 16px;
 
   margin-bottom: 20px;
-  color: rgba(18, 20, 23, 0.8);
+  color: ${color.gryeDark};
   letter-spacing: 1.4;  
 `;
 
@@ -112,7 +92,7 @@ export const YourTeacherBlock = styled.div`
 export const YourTeacherImg = styled.img`
   width: 44px;
   height: 44px;
-    border-radius: 50%; 
+  border-radius: 50%; 
 `;
 
 export const YourTeacher = styled.p`
@@ -168,8 +148,6 @@ font-weight: 400;
     display: inline-block;
   }
 `;
-
-
 
 export const CheckBoxActiveWrapper = styled.div`
 position: absolute;

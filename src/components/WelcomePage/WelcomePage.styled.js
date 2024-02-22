@@ -68,7 +68,6 @@ export const TitleLenguage = styled.span`
   }
 `;
 
-
 export const MotivationalText = styled.p`
  max-width: 471px;
   font-size: 16px;
@@ -93,12 +92,9 @@ transition: background 0.25s linear;
   }
 `
 
-////////////  /\ ContainerMainInf  //////////////////////////////////
 export const ChildImg = styled.img`
 border-radius: 30px;
 `
-
-///////////////////////////////////////////////////////////////////////////
 
 export const ContainerBenefits = styled.div`
   display: flex;
@@ -129,7 +125,6 @@ export const DataFigures = styled.p`
   margin-right: 16px; 
 `
 
-
 export const SmallTitleFirstTwo  = styled.p`
   width: 96px;
   line-height: 1.29;
@@ -137,6 +132,5 @@ export const SmallTitleFirstTwo  = styled.p`
 
 export const SmallTitleSecondTwo  = styled.p`
   width: 74px;
-  line-height: 1.29;
- 
+  line-height: 1.29; 
 `

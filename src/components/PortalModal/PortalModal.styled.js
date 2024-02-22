@@ -1,3 +1,4 @@
+import color from "common/GlobalColers";
 import styled from "styled-components";
 
 export const Modal = styled.div`
@@ -9,12 +10,11 @@ export const Modal = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(25, 26, 21, 0.6);    
+    background-color: ${color.gryeTextColor};    
     overflow: auto;
     z-index:5;
 
     transform: scale(0);
-
     &.active {
         transform: scale(1);
     }

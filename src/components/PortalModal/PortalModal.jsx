@@ -6,14 +6,12 @@ export default function PortalModal({ active, setActive, children }) {
 
   useEffect(() => {
     const closeModal = (e) => {
-        // console.log('closeModal event:', e);
       if (e.key === 'Escape') {
         setActive(false);
       }
     };
 
     const handleBodyScroll = (disableScroll) => {
-        // console.log('handleBodyScroll disableScroll:', disableScroll);
       if (disableScroll) {        
         document.body.classList.add('no-scroll');
       } else {        
@@ -30,7 +28,6 @@ export default function PortalModal({ active, setActive, children }) {
     }
 
     return () => {
-        // console.log('cleanup');
       document.removeEventListener('keydown', closeModal);
       handleBodyScroll(false);
     };

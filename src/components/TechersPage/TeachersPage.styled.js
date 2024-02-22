@@ -5,8 +5,7 @@ import styled from 'styled-components'
 export const WraperBox = styled.div`
   display: flex;
   align-items: center;
-  flex-direction:column;
- 
+  flex-direction:column; 
 `
 
 export const TeachersPageContainer = styled.div`
@@ -14,7 +13,6 @@ export const TeachersPageContainer = styled.div`
   align-items: start;
   flex-Direction: column;
   padding:64px 128px 96px 128px;
-  /* width: 1440px; */
   background: ${color.whiteDarker};;
 `
 

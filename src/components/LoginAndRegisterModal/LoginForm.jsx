@@ -27,7 +27,6 @@ export default function LoginForm({ onSubmit, closeModals }) {
   };
   
   const handleSubmit = async (values, {resetForm}) => {
-    // await new Promise((resolve) => setTimeout(resolve, 500));
     signInWithEmailAndPassword(auth,  values.email, values.password)
     .then(()=>{
       resetForm();
@@ -36,9 +35,7 @@ export default function LoginForm({ onSubmit, closeModals }) {
     .catch((e) => {
       setError("Sorry couldn`t find your account")
       resetForm();
-
     })
-
   }
   
   return (
@@ -47,20 +44,12 @@ export default function LoginForm({ onSubmit, closeModals }) {
 
         {({ errors, touched }) => (
           <Form>
-            <FormFields>
-              
-
-                <FormField name="email" type="email" placeholder="Email" style={{
-                            borderColor:
-                            errors.email && touched.email ? "red" : null,
-                        }} />
+            <FormFields> 
+              <FormField name="email" type="email" placeholder="Email" error={errors.email && touched.email ? "true" : "false" }/>
                 <ErrorMessageStyled name="email" component='div' />
 
                 <FormFieldPassvordConteiner>
-                  <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" style={{
-                          borderColor:
-                            errors.password && touched.password ? "red" : null,
-                        }} />
+                  <FormFieldPassvord  name="password" type={showPassword ? "text" : "password"} placeholder="Password" error={errors.password && touched.password ? "true" : "false"} />
 
                   {showPassword ? (
                         <EyeSvg
@@ -85,13 +74,11 @@ export default function LoginForm({ onSubmit, closeModals }) {
 
                 {error && <EmailErrorMessage >{error}</EmailErrorMessage>}
               <FormBtn type="submit">Log In</FormBtn>
-
             </FormFields>
           </Form>
         )}
       </Formik>
     </div>
-
   );
 };
   

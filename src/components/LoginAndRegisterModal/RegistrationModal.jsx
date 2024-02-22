@@ -3,12 +3,6 @@ import sprite from '../../img/svg-file.svg';
 import RegistrationForm from "./RegistrationForm";
 
 export default function RegistrationModal({closeModals}) {
-
-  const handleLogin = (values) => {
-    // console.log(values);
-    closeModals();
-  };
-
   return (
     <WrapperModal>
       <BtnClose onClick={closeModals}>
@@ -20,7 +14,7 @@ export default function RegistrationModal({closeModals}) {
       <ModalTitle>Registration</ModalTitle>
       <ModalText>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</ModalText>
 
-      <RegistrationForm onSubmit={handleLogin} closeModals={closeModals}/>          
+      <RegistrationForm  closeModals={closeModals}/>          
     </WrapperModal>
   );
 }

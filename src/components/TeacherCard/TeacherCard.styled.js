@@ -11,20 +11,19 @@ export const WraperCard = styled.li`
     width: 1184px;
     @media (max-width: 1216px) {
        width: auto;
-  };
+    };
 `
 export const CardHeartBtn = styled.button`
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  stroke:  ${color.blackPrimary};
-  background: transparent;
-  /* stroke: black; */
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    stroke:  ${color.blackPrimary};
+    background: transparent;
 `;
 
 export const ImgCardConteiner = styled.div`
@@ -52,7 +51,6 @@ export const ActiveGreenSvg = styled.svg`
     top: 17px;
     right: 17px;  
 `
-//////////////////////////////////////////////////////////
 
 export const InformCardConteiner = styled.div`
     padding: 24px;
@@ -71,7 +69,7 @@ export const Subtitle = styled.h3`
 
     @media (max-width: 1160px) {
         margin-bottom: 12px;
-  };
+    };
 `
 export const InformShortCardConteiner = styled.div`
     display: flex;
@@ -81,15 +79,14 @@ export const InformShortCardConteiner = styled.div`
     @media (max-width: 1160px) {
         margin-left: 40px;
         margin-bottom: 32px;
-  };    
+    };    
 `
 
 export const LessonsOnline = styled.p`
     display: flex;
     align-items: center;
     fill: ${color.whitePrimary};
-    stroke: ${color.blackPrimary};
-    
+    stroke: ${color.blackPrimary};    
     gap: 4px;
 `
 
@@ -110,18 +107,17 @@ export const Divider = styled.div`
         top: 0;        
         height: 100%;
         width: 1px;
-        background-color: rgba(18, 20, 23, 0.2); 
+        background-color: ${color.greyDivider}; 
     }
 
     @media (max-width: 560px) {
        display: none;
-  };
+    };
 `;
 
 
-
 export const Price = styled.span`
-     color: ${color.BrightGreen};
+    color: ${color.BrightGreen};
 `
 
 export const FullName = styled.h2`
@@ -150,8 +146,7 @@ export const ReadMoreBtn = styled.button`
     margin-bottom: 32px;
     font-size: 16px;
     background: transparent;
-    text-decoration: underline; 
-
+    text-decoration: underline;
     &:hover {
         text-decoration: none; 
     }
@@ -170,7 +165,7 @@ export const LevelsList = styled.ul`
 export const LevelLanguage = styled.li`
     padding: 8px 12px;
     border-radius: 35px;
-    border: 1px solid rgba(18, 20, 23, 0.2);
+    border: 1px solid ${color.greyDivider};
 
     &:first-child {
         border-color: transparent;

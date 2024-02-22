@@ -6,41 +6,41 @@ import TrialLessonModal from "components/LoginAndRegisterModal/TrialLessonModal"
 import { auth } from '../../firebase';
 import { onAuthStateChanged } from "firebase/auth";
 import PortalModal from "components/PortalModal/PortalModal";
+import { toast } from "react-toastify";
 
 export default function TeacherCard({teacher, handleFavorite, sourceComponent }) {
-    const [expanded, setExpanded] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
-    const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [trailLessonModalOpen, setTrailLessonModalOpen] = useState(false);
 
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        const userId = user?.uid;
-        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-        setIsFavorite(storedFavorites.some(fav => fav.avatar_url === teacher.avatar_url));
-      });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const userId = user?.uid;
+      const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+      setIsFavorite(storedFavorites.some(fav => fav.avatar_url === teacher.avatar_url));
+    });
     
-      return () => unsubscribe();
-    }, [teacher.avatar_url]);
+    return () => unsubscribe();
+  }, [teacher.avatar_url]);
 
 
-    const openLoginModal = () => {
-      setTrailLessonModalOpen(true);
-    };
-    const handleReadMoreClick = () => {
-      setExpanded((prevExpanded) => !prevExpanded);
-    };
+  const openLoginModal = () => {
+    setTrailLessonModalOpen(true);
+  };
+  const handleReadMoreClick = () => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  };
 
-    const handleHeartClick = () => {
-      const userId = auth.currentUser?.uid;
-      if (userId) {
-        const newIsFavorite = !isFavorite;
-        setIsFavorite(newIsFavorite);
+  const handleHeartClick = () => {
+    const userId = auth.currentUser?.uid;
+    if (userId) {
+      const newIsFavorite = !isFavorite;
+      setIsFavorite(newIsFavorite);
   
-        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+      const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
   
         if (newIsFavorite) {
-          localStorage.setItem(`favorites-${userId}`, JSON.stringify([...storedFavorites, teacher]));
-          
+          localStorage.setItem(`favorites-${userId}`, JSON.stringify([...storedFavorites, teacher]));          
         } else {
           const updatedFavorites = storedFavorites.filter((fav) => fav.avatar_url !== teacher.avatar_url);
           localStorage.setItem(`favorites-${userId}`, JSON.stringify(updatedFavorites));
@@ -49,91 +49,89 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
             handleFavorite()
           }
         }        
-      } else {
-        alert("To add to favorites you must be logged in.");
-      }
-    };
+    } else {
+      toast.error("To add to favorites you must be logged in.")
+    }
+  };
 
 
-    return (   
-        <WraperCard>
-          <CardHeartBtn onClick={handleHeartClick} >
-            <svg width={26} height={26} >
-              <use href={`${sprite}#${isFavorite ? 'icon-heart-active' : 'icon-normal-heart'}`}  />
+  return (   
+    <WraperCard>
+      <CardHeartBtn onClick={handleHeartClick} >
+        <svg width={26} height={26} >
+          <use href={`${sprite}#${isFavorite ? 'icon-heart-active' : 'icon-normal-heart'}`}  />
+        </svg>
+      </CardHeartBtn>
+
+      <ImgCardConteiner>
+        <BorderImgCard>
+          <ImgCard src={teacher.avatar_url} alt="teachers photo" />
+          <ActiveGreenSvg width={12} height={12} >
+            <use href={`${sprite}#icon-geen-circle`} />
+          </ActiveGreenSvg>
+        </BorderImgCard>               
+      </ImgCardConteiner>
+
+      <InformCardConteiner>
+        <MainInfBlock>
+          <Subtitle>Languages</Subtitle>      
+          <InformShortCardConteiner>
+          <LessonsOnline>
+            <svg width={16} height={16}>
+              <use href={`${sprite}#icon-book-open`} />
             </svg>
-          </CardHeartBtn>
+            Lessons online
+          </LessonsOnline>
+          <Divider />
+          <p>Lessons done: <span>{teacher.lessons_done}</span></p>
+          <Divider />
+          <Rating>
+            <svg width={16} height={16}>
+              <use href={`${sprite}#icon-star`} />
+            </svg>
+            Rating: <span>{teacher.rating}</span>
+          </Rating>
+          <Divider />
+          <p>Price / 1 hour: <Price> {teacher.price_per_hour}$</Price></p>
+          </InformShortCardConteiner>                    
+        </MainInfBlock>
 
-          <ImgCardConteiner>
-          <BorderImgCard>
-              <ImgCard src={teacher.avatar_url} alt="teachers photo" />
-              <ActiveGreenSvg width={12} height={12} >
-                <use href={`${sprite}#icon-geen-circle`} />
-              </ActiveGreenSvg>
+        <FullName>{teacher.name} {teacher.surname}</FullName>
 
-            </BorderImgCard>               
-          </ImgCardConteiner>
+        <BlockSkills>
+          <BlockShortInformationsTeacher>
+            <Subtitle>Speaks:</Subtitle>
+            <LanguagesUnderlined>{teacher.languages.join(', ')}</LanguagesUnderlined>
+          </BlockShortInformationsTeacher>
 
-            <InformCardConteiner>
-                <MainInfBlock>
-                  <Subtitle>Languages</Subtitle>      
-        <InformShortCardConteiner>
-                  <LessonsOnline>
-                    <svg width={16} height={16}>
-                      <use href={`${sprite}#icon-book-open`} />
-                    </svg>
-                    Lessons online
-                  </LessonsOnline>
-                  <Divider />
-                  <p>Lessons done: <span>{teacher.lessons_done}</span></p>
-                  <Divider />
-                  <Rating>
-                    <svg width={16} height={16}>
-                      <use href={`${sprite}#icon-star`} />
-                    </svg>
-                    Rating: <span>{teacher.rating}</span>
-                  </Rating>
-                  <Divider />
-                  <p>Price / 1 hour: <Price> {teacher.price_per_hour}$</Price></p>
-          </InformShortCardConteiner>
-                    
-                </MainInfBlock>
+          <BlockShortInformationsTeacher>
+            <Subtitle>Lesson Info:</Subtitle>
+            <p>{teacher.lesson_info}</p>
+          </BlockShortInformationsTeacher>
 
-                <FullName>{teacher.name} {teacher.surname}</FullName>
+          <BlockShortInformationsTeacher>
+            <Subtitle>Conditions:</Subtitle>
+            <p>{teacher.conditions}</p>
+          </BlockShortInformationsTeacher>
+        </BlockSkills>
 
-                <BlockSkills>
-                  <BlockShortInformationsTeacher>
-                    <Subtitle>Speaks:</Subtitle>
-                    <LanguagesUnderlined>{teacher.languages.join(', ')}</LanguagesUnderlined>
-                  </BlockShortInformationsTeacher>
+        {expanded && <EducationalBkg experience={teacher.experience} reviews={teacher.reviews}/>}
+        {!expanded  && <ReadMoreBtn onClick={handleReadMoreClick}>Read more</ReadMoreBtn>}                      
 
-                  <BlockShortInformationsTeacher>
-                    <Subtitle>Lesson Info:</Subtitle>
-                    <p>{teacher.lesson_info}</p>
-                  </BlockShortInformationsTeacher>
+        <LevelsList>
+          {teacher.levels.map((language) => (
+            <LevelLanguage key={language} >
+              #{language}
+              </LevelLanguage>
+          ))}
+        </LevelsList>
 
-                  <BlockShortInformationsTeacher>
-                    <Subtitle>Conditions:</Subtitle>
-                    <p>{teacher.conditions}</p>
-                  </BlockShortInformationsTeacher>
-                </BlockSkills>
-
-                {expanded && <EducationalBkg experience={teacher.experience} reviews={teacher.reviews}/>}
-                {!expanded  && <ReadMoreBtn onClick={handleReadMoreClick}>Read more</ReadMoreBtn>}                      
-
-                <LevelsList>
-                    {teacher.levels.map((language) => (
-                        <LevelLanguage key={language} >
-                          #{language}
-                        </LevelLanguage>
-                    ))}
-                </LevelsList>
-
-                {expanded && <TrialLessonBtn onClick={openLoginModal} >Book trial lesson</TrialLessonBtn>}
+        {expanded && <TrialLessonBtn onClick={openLoginModal} >Book trial lesson</TrialLessonBtn>}
                
-                <PortalModal active={trailLessonModalOpen} setActive={setTrailLessonModalOpen}>
-                  <TrialLessonModal closeModals={() => setTrailLessonModalOpen()} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />
-                </PortalModal>
-            </InformCardConteiner>
-        </WraperCard>      
-    );
+        <PortalModal active={trailLessonModalOpen} setActive={setTrailLessonModalOpen}>
+          <TrialLessonModal closeModals={() => setTrailLessonModalOpen()} img={teacher.avatar_url} fullName={`${teacher.name} ${teacher.surname}`} />
+        </PortalModal>
+      </InformCardConteiner>
+    </WraperCard>      
+  );
 }

@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 
 export const WrapperEmptyFavoriteList = styled.div`
@@ -14,11 +13,10 @@ export const EmptyFavoriteListImg = styled.img`
 `
 
 export const EmptyFavoriteListTitle = styled.h2`
-max-width: 300px;
+    max-width: 300px;
     margin-bottom: 12px;
 `
 
 export const EmptyFavoriteHeart = styled.span`
-margin: 0 4px;
-;
+    margin: 0 4px;
 `

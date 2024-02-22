@@ -17,9 +17,8 @@ export const BtnLogOutAndRegistration = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
- width: 168px;
- height: 48px;
-  // padding: 14px 39px;
+  width: 168px;
+  height: 48px;
   color: ${color.whitePrimary};
   background: ${color.blackPrimary};
 
@@ -48,5 +47,4 @@ export const BtnLogIn = styled.button`
 
   font-weight: 700;
   font-size: 16px;
-
 `

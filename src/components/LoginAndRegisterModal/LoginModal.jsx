@@ -8,7 +8,6 @@ export default function LoginModal({closeModals}) {
     
     const closeModalOnEscape = (e) => {
       if (e.key === 'Escape') {
-        // console.log("ggggggggggggg")
         e.stopPropagation();
         closeModals();
       }
@@ -21,11 +20,6 @@ export default function LoginModal({closeModals}) {
     };
   }, [closeModals]);
 
-  const handleLogin = (values) => {
-    // console.log(values);
-    closeModals();
-  };
-  
     return (
         <WrapperModal>
           <BtnClose onClick={closeModals}>
@@ -37,7 +31,7 @@ export default function LoginModal({closeModals}) {
           <ModalTitle>Log In</ModalTitle>
           <ModalText>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</ModalText>
 
-          <LoginForm onSubmit={handleLogin} closeModals={closeModals}/>          
+          <LoginForm closeModals={closeModals}/>          
         </WrapperModal>
     );
 }

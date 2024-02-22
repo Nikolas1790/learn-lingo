@@ -1,4 +1,4 @@
-# Learn Lingo Application
+# LearnLingo Application
 ![Creating repo from a template step 1](./src//img/readme/main-screen.jpg)
 
 This project is a web application designed for users to explore and choose language teachers. Users can access a list of available filters for teachers and mark their favorites.

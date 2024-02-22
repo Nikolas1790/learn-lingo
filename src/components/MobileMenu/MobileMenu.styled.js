@@ -20,7 +20,7 @@ export const WrapperMobileMenu = styled.div`
     left: 18%; 
     transform: translateX(-50%);
     top: 100%; 
-    z-index: 1001;
+    z-index: 4;
     @media (min-width: 731px) {
         display: none;
     };
@@ -42,7 +42,7 @@ export const MobileMenuIcon = styled.button`
 
 export const MobileMenu = styled.div`
     position: absolute;
-    z-index: 1000;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     left: 50%; 

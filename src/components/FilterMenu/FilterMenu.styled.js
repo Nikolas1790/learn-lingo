@@ -1,3 +1,4 @@
+import color from 'common/GlobalColers';
 import styled from 'styled-components'
 
 export const WraperMenu = styled.div`
@@ -5,23 +6,21 @@ export const WraperMenu = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 32px;
-min-width: 1184px;
+  min-width: 1184px;
 
-@media (max-width: 1260px) {
-  min-width: auto;
+  @media (max-width: 1260px) {
+    min-width: auto;
   };
-
 `
 
 export const TitleMenu = styled.p`
   font-weight: 500;
-  color: rgb(138, 138, 137);
+  color: ${color.subtitleColor};
   margin-bottom:8px;
 `
 
 export const OptLanguages = styled.li`
   font-weight: 500;
-
 `
 
 export const Dropdown = styled.div`
@@ -29,31 +28,29 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownButton = styled.button`
-display: flex;
+  display: flex;
 
-font-weight: 500;
-font-size: 18px;
+  font-weight: 500;
+  font-size: 18px;
   height: 48px;
   border-radius: 14px; 
   border: none;
   outline: none;
   cursor: pointer;
 
-  background-color: #fff;
+  background-color: ${color.whitePrimary};
   padding: 10px;
-  /* border: 1px solid red; */
 
   min-width: ${props => props.width || '221px'};
 `;
 
 export const DropdownList = styled.ul`
-
   position: absolute;
   z-index: 1;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  border: 1px solid rgba(18, 20, 23, 0.1);
+  background-color: ${color.whitePrimary};
+  border: 1px solid ${color.greySuperLight};
   border-top: none;
   display: none;
 
@@ -71,81 +68,10 @@ export const DropdownList = styled.ul`
 
 export const DropdownItem = styled.li`
   padding: 10px;
-  cursor: pointer;
-  
+  cursor: pointer;  
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${color.greySuperLight};
   }
 `;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
