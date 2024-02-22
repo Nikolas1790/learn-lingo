@@ -8,7 +8,7 @@ This project is a web application designed for users to explore and choose langu
 
 
 
- [LearnLingo](https://nikolas1790.github.io/learn-lingo/).
+ [LearnLingo](https://nikolas1790.github.io/learn-lingo/)
 
 ## Table of Contents
 1. Table of Contentst
@@ -16,15 +16,15 @@ This project is a web application designed for users to explore and choose langu
 3. Technologies Used
 
 ## Features
-- **Żółty kolor** - View a list availiable techers
-- **Zielony kolor** - Filter teachers on various criteria(Languages,Level of knowledge )
-- **Czerwony kolor** - Mark teachers as favotires
-- **Czerwony kolor** - Pagination for browsing throudh te teacher list
+- **.** - View a list availiable techers
+- **.** - Filter teachers on various criteria(Languages,Level of knowledge )
+- **.** - Mark teachers as favotires
+- **.** - Pagination for browsing throudh te teacher list
 
 ## Technologies Used
-- **React.js** - Java Script library for user interfaces
-- **Styled Components** - Styling library for React components
-- **Firebase** - API for simulation dackend data
+- **React.js**: Java Script library for user interfaces
+- **Styled Components**: Styling library for React components
+- **Firebase**: API for simulation dackend data
 
 
 
@@ -33,4 +33,4 @@ This project is a web application designed for users to explore and choose langu
 
 For any inquiries or assistance, please contact us at [ovsyannikovnikolai1790@gmail.com](ovsyannikovnikolai1790@gmail.com).
 
-Thank you for choosing our Car Rental Platform!
+Thank you for choosing our LearnLingo Platform!
