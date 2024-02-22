@@ -1,5 +1,5 @@
 import { Logo } from "components/Logo/Logo";
-import {  HeaderContainer, HeaderNav, StyledNavigation } from "./Header.styled";
+import {  HeaderContainer, HeaderNav, StyledNavigation} from "./Header.styled";
 import {  useState } from "react";
 import LoginModal from "components/LoginAndRegisterModal/LoginModal";
 import RegistrationModal from "components/LoginAndRegisterModal/RegistrationModal";
@@ -7,10 +7,12 @@ import LogOutBlock from "components/LogInLogOutBlock/LogOutBlock";
 import { useAuth } from "components/AuthProvider/AuthProvider";
 import LogInBlock from "components/LogInLogOutBlock/LogInBlock";
 import PortalModal from "components/PortalModal/PortalModal";
+import MobileMenuComponent from "components/MobileMenu/MobileMenu";
 
 export default function Header() {
     const [modalActive, setModalActive] = useState(false);
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
+
     const { authUser, loading } = useAuth();
  
     const openLoginModal = () => {
@@ -21,9 +23,9 @@ export default function Header() {
     const openRegisterModal = () => {
         setRegisterModalOpen(true);
     };
-    
+
     return (
-        <HeaderContainer>
+        <HeaderContainer >
             <Logo />
             
             <HeaderNav>
@@ -32,10 +34,11 @@ export default function Header() {
                 { authUser && <StyledNavigation to="/favorites">Favorites</StyledNavigation>}
             </HeaderNav>
 
-           { loading ? null : authUser ?
+            { loading ? null : authUser ?
             <LogOutBlock /> :
             <LogInBlock openLoginModal={openLoginModal} openRegisterModal={openRegisterModal}/>}
 
+            <MobileMenuComponent />
 
             <PortalModal active={registerModalOpen} setActive={setRegisterModalOpen}>
                 <RegistrationModal closeModals={() => setRegisterModalOpen()} />

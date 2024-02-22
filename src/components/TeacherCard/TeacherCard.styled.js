@@ -22,8 +22,9 @@ export const CardHeartBtn = styled.button`
   align-items: center;
   width: 18px;
   height: 18px;
-   ${color.blackPrimary};
+  stroke:  ${color.blackPrimary};
   background: transparent;
+  /* stroke: black; */
 `;
 
 export const ImgCardConteiner = styled.div`

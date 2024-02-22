@@ -34,7 +34,7 @@ export const ContainerMainInf = styled.div`
   background: ${color.whiteDarker};
 
   @media (max-width: 500px) {
-    padding: 10px 5px;
+    padding: 60px 5px 10px 5px;
   }
 `
 

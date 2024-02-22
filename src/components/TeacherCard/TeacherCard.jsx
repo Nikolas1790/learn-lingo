@@ -59,7 +59,7 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
         <WraperCard>
           <CardHeartBtn onClick={handleHeartClick} >
             <svg width={26} height={26} >
-              <use href={`${sprite}#${isFavorite ? 'icon-heart-active' : 'icon-normal-heart'}`} />
+              <use href={`${sprite}#${isFavorite ? 'icon-heart-active' : 'icon-normal-heart'}`}  />
             </svg>
           </CardHeartBtn>
 
