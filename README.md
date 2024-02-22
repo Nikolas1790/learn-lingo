@@ -16,7 +16,7 @@ This project is a web application designed for users to explore and choose langu
 3. Technologies Used
 
 ## Features
-- **.** - View a list availiable techers
+-   View a list availiable techers
 - **.** - Filter teachers on various criteria(Languages,Level of knowledge )
 - **.** - Mark teachers as favotires
 - **.** - Pagination for browsing throudh te teacher list
