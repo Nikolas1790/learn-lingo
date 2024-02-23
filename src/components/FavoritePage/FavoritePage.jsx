@@ -7,10 +7,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 import EmptyFavoritesList from "components/EmptyFavoritesList/EmptyFavoritesList";
 
-
 export default function FavoritePage() {
   const [teachers, setTeachers] = useState([]);
-
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [allFavorits, setallFavorits] = useState([]);

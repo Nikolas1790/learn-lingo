@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Dropdown, DropdownButton, DropdownItem, DropdownList, TitleMenu, WraperMenu } from "./FilterMenu.styled";
 import { getDatabase, ref, get } from 'firebase/database';
+import { toast } from "react-toastify";
 
 const prices = [10, 28, 30];
 
@@ -36,7 +37,7 @@ export default function FilterMenu({setTeachers}) {
 
                     setTeachers(filteredTeachers);
                 } else {
-                    console.log('No data available');
+                    toast.error("No data available")
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);

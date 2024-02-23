@@ -4,6 +4,7 @@ import TeacherCard from "components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
 import { getDatabase, ref, get } from 'firebase/database';
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
+import { toast } from "react-toastify";
 
 export default function TeachersPage() {
   const [teachers, setTeachers] = useState([]);
@@ -21,7 +22,7 @@ export default function TeachersPage() {
           const teachersArray = Object.values(teachersData);
           setTeachers(teachersArray.slice(0, visibleTeachers));
         } else {
-          console.log('No data available');
+          toast.error("No data available")
         }
       } catch (error) {
         console.error('Error fetching data:', error);

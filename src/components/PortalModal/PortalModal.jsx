@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Modal } from './PortalModal.styled';
 
 export default function PortalModal({ active, setActive, children }) {
-
   useEffect(() => {
     const closeModal = (e) => {
       if (e.key === 'Escape') {

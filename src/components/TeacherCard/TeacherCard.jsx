@@ -54,7 +54,6 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
     }
   };
 
-
   return (   
     <WraperCard>
       <CardHeartBtn onClick={handleHeartClick} >
@@ -65,7 +64,7 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
 
       <ImgCardConteiner>
         <BorderImgCard>
-          <ImgCard src={teacher.avatar_url} alt="teachers photo" />
+          <ImgCard src={teacher.avatar_url} alt="teacher photo" />
           <ActiveGreenSvg width={12} height={12} >
             <use href={`${sprite}#icon-geen-circle`} />
           </ActiveGreenSvg>
@@ -122,7 +121,7 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
           {teacher.levels.map((language) => (
             <LevelLanguage key={language} >
               #{language}
-              </LevelLanguage>
+            </LevelLanguage>
           ))}
         </LevelsList>
 
