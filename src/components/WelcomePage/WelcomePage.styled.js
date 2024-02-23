@@ -101,14 +101,18 @@ export const ContainerBenefits = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap:  wrap;
-  gap: 100px;
+  gap: 93px;
 
-  padding: 40px 122px;
+  padding: 40px 120px;
   color: ${color.gryeTextColor};
   border-radius: 30px;
   border: 2px solid ${color.darkGgeen};
   border-style: dashed;
+  width: 1312px;
 
+  @media (max-width: 1354px) {
+    width: auto;
+  } 
   @media (max-width: 500px) {
     padding: 10px 5px;
   }  

@@ -75,3 +75,24 @@ export const DropdownItem = styled.li`
   }
 `;
 
+export const ResetButton = styled.button`
+  display: flex;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 8px; 
+  border: none;
+  outline: none;
+  margin-top: auto;
+
+  background-color: ${color.darkGgeen};
+  padding: 4px 12px;
+
+  transition: background 0.25s linear;
+  &:hover,
+  &:focus {    
+    background: ${color.lightGreene}; 
+  }
+  &:active {
+    background: linear-gradient(to bottom, ${color.darkGgeen}, ${color.lightGreene});
+  }
+`;

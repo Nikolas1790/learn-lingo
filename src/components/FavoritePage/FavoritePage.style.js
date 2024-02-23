@@ -5,6 +5,8 @@ export const WraperBox = styled.div`
     display: flex;
     align-items: center;
     flex-direction:column; 
+    background: ${color.whiteDarker};
+    min-height: 100vh;
 `
 
 export const FavoritePageContainer = styled.div`
@@ -13,5 +15,4 @@ export const FavoritePageContainer = styled.div`
     flex-Direction: column;
     padding:64px 128px 96px 128px;
     max-width: 1440px;
-    background: ${color.whiteDarker};;
 `

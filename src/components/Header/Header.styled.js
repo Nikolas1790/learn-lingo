@@ -28,7 +28,6 @@ export const StyledNavigation = styled(NavLink)`
   line-height: 1.25;
 
   &.active {
-
     &::after {
       content: '';
       position: absolute;
@@ -39,6 +38,7 @@ export const StyledNavigation = styled(NavLink)`
       left: 50%; 
       transform: translateX(-50%);
       top: 75%; 
+      
     }
   }
 
@@ -46,5 +46,12 @@ export const StyledNavigation = styled(NavLink)`
     &::after {
       display: none;
     }
+  }
+
+  &:hover{
+    background:  ${color.lightGreene};  
+    color: ${color.blackPrimary}; 
+    transform: scale(1.1);
+    border-radius: 12px;
   }
 `

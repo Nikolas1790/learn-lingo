@@ -5,7 +5,6 @@ import sprite from '../../img/svg-file.svg';
 import { useAuth } from 'components/AuthProvider/AuthProvider';
 import {  BtnLogOutAndRegistration, Name, WrapperBlock } from './LogInLogOutStyled/LogInLogOut.styled';
 
-
 export default function LogOutBlock() {
   const { authUser } = useAuth();
 

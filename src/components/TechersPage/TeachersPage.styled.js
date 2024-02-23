@@ -6,14 +6,15 @@ export const WraperBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction:column; 
+  background: ${color.whiteDarker};
+  min-height: 100vh;
 `
 
 export const TeachersPageContainer = styled.div`
   display: flex;
   align-items: start;
   flex-Direction: column;
-  padding:64px 128px 96px 128px;
-  background: ${color.whiteDarker};;
+  padding:64px 128px 96px 128px;  
 `
 
 export const ErrorMessageStyled = styled(ErrorMessage)`

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Dropdown, DropdownButton, DropdownItem, DropdownList, TitleMenu, WraperMenu } from "./FilterMenu.styled";
+import { Dropdown, DropdownButton, DropdownItem, DropdownList, ResetButton, TitleMenu, WraperMenu } from "./FilterMenu.styled";
 import { getDatabase, ref, get } from 'firebase/database';
 import { toast } from "react-toastify";
 
-const prices = [10, 28, 30];
-
 export default function FilterMenu({setTeachers}) {
-    const [selectedLanguage, setSelectedLanguage] = useState("French ");
-    const [selectedLevels, setSelectedLevels] = useState("A1 Beginner");
-    const [selectedPrices, setSelectedPrices] = useState(prices[0]);
+    const [selectedLanguage, setSelectedLanguage] = useState("");
+    const [selectedLevels, setSelectedLevels] = useState("");
+    const [selectedPrices, setSelectedPrices] = useState("");
     const [languageOptions, setLanguageOptions] = useState([]);
     const [levelOptions, setLevelOptions] = useState([]);
-    
+    const [levelPrices, setLevelPrices] = useState([]);
     const db = getDatabase();
 
     useEffect(() => {
@@ -26,13 +24,19 @@ export default function FilterMenu({setTeachers}) {
 
                     const uniqueLanguages = Array.from(new Set(teachersArray.flatMap(teacher => teacher.languages)));
                     const uniqueLevels = Array.from(new Set(teachersArray.flatMap(teacher => teacher.levels)));
+                    const uniquePrice = Array.from(new Set(teachersArray.flatMap(teacher => teacher.price_per_hour)));
+
                     setLanguageOptions(uniqueLanguages);
                     setLevelOptions(uniqueLevels);
+                    setLevelPrices(uniquePrice)
+
+
                     const filteredTeachers = teachersArray.filter(teacher => {
-                        return (
-                            teacher.languages.includes(selectedLanguage) &&
-                            teacher.levels.includes(selectedLevels)
-                        );
+                        const filterByLanguage = selectedLanguage ? teacher.languages.includes(selectedLanguage) : true;
+                        const filterByLevel = selectedLevels ? teacher.levels.includes(selectedLevels) : true;
+                        const filterByPrice = selectedPrices ? teacher.price_per_hour === selectedPrices : true;
+                        
+                        return filterByLanguage && filterByLevel && filterByPrice;
                     });
 
                     setTeachers(filteredTeachers);
@@ -44,10 +48,16 @@ export default function FilterMenu({setTeachers}) {
             }
         };  
         fetchData();
-    }, [db, selectedLanguage, selectedLevels,  setTeachers]);
+    }, [db, selectedLanguage, selectedLevels, selectedPrices,  setTeachers]);
 
     const handleMenuChange = (value, setValue) => {
         setValue(value);
+    };
+
+    const resetFilters = () => {
+        setSelectedLanguage("");
+        setSelectedLevels("");
+        setSelectedPrices("");
     };
 
     return (   
@@ -55,7 +65,7 @@ export default function FilterMenu({setTeachers}) {
             <div>
                 <TitleMenu>Languages</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="221px" >{selectedLanguage} </DropdownButton>
+                    <DropdownButton width="221px" >{selectedLanguage || "Select Language"}</DropdownButton>
                     <DropdownList>
                         {languageOptions.map((language, index) => (
                             <DropdownItem key={index} value={language} onClick={() => handleMenuChange(language, setSelectedLanguage)}>
@@ -69,7 +79,7 @@ export default function FilterMenu({setTeachers}) {
             <div>
                 <TitleMenu>Level of knowledge</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="198px" >{selectedLevels}</DropdownButton>                    
+                    <DropdownButton width="198px" >{selectedLevels || "Select Level"}</DropdownButton>                    
                     <DropdownList>
                         {levelOptions.map((level, index) => (
                             <DropdownItem key={index} value={level} onClick={() => handleMenuChange(level, setSelectedLevels)}>
@@ -83,9 +93,9 @@ export default function FilterMenu({setTeachers}) {
             <div>
                 <TitleMenu>Price</TitleMenu>
                 <Dropdown>
-                    <DropdownButton width="124px" >{selectedPrices} $</DropdownButton>                    
+                    <DropdownButton width="124px" >{selectedPrices + " $" }</DropdownButton>                    
                     <DropdownList>
-                        {prices.map((price, index) => (
+                        {levelPrices.sort((a, b) => a - b).map((price, index) => (
                             <DropdownItem key={index} value={price} onClick={() => handleMenuChange(price, setSelectedPrices)}>
                                 {price}
                             </DropdownItem>
@@ -93,6 +103,9 @@ export default function FilterMenu({setTeachers}) {
                     </DropdownList>                    
                 </Dropdown>
             </div>
+
+            { selectedLanguage || selectedLevels || selectedPrices ? <ResetButton onClick={resetFilters}>Reset</ResetButton> : null}
+
         </WraperMenu>     
     );
 }
