@@ -46,7 +46,7 @@ export default function TeachersPage() {
         setTeachers((prevTeachers) => [...prevTeachers, ...newVisibleTeachers]);
         setVisibleTeachers((prevVisibleTeachers) => prevVisibleTeachers + 4);
       } else {
-        console.log('No data available');
+        toast.error("No data available")
       }
     } catch (error) {
       console.error('Error fetching data:', error);
