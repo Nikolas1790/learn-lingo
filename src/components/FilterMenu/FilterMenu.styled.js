@@ -27,6 +27,15 @@ export const Dropdown = styled.div`
   position: relative;
 `;
 
+export const DropdownSvg = styled.svg`
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  cursor: pointer;
+  stroke: ${color.blackPrimary};
+  fill: none;
+`;
+
 export const DropdownButton = styled.button`
   display: flex;
 

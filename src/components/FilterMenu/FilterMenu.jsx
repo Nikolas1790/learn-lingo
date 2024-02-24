@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Dropdown, DropdownButton, DropdownItem, DropdownList, ResetButton, TitleMenu, WraperMenu } from "./FilterMenu.styled";
+import { Dropdown, DropdownButton, DropdownItem, DropdownList, DropdownSvg, ResetButton, TitleMenu, WraperMenu } from "./FilterMenu.styled";
 import { getDatabase, ref, get } from 'firebase/database';
 import { toast } from "react-toastify";
+import sprite from '../../img/svg-file.svg';
 
 export default function FilterMenu({setTeachers, onResultsFoundChange}) {
     const [selectedLanguage, setSelectedLanguage] = useState("");
@@ -66,6 +67,9 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
             <div>
                 <TitleMenu>Languages</TitleMenu>
                 <Dropdown>
+                    <DropdownSvg width={20} height={20} >
+                        <use href={`${sprite}#icon-chevron-down`}  />
+                    </DropdownSvg>
                     <DropdownButton width="221px" >{selectedLanguage || "Select Language"}</DropdownButton>
                     <DropdownList>
                         {languageOptions.map((language, index) => (
@@ -80,6 +84,9 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
             <div>
                 <TitleMenu>Level of knowledge</TitleMenu>
                 <Dropdown>
+                    <DropdownSvg width={20} height={20} >
+                        <use href={`${sprite}#icon-chevron-down`}  />
+                    </DropdownSvg>
                     <DropdownButton width="198px" >{selectedLevels || "Select Level"}</DropdownButton>                    
                     <DropdownList>
                         {levelOptions.map((level, index) => (
@@ -94,6 +101,9 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
             <div>
                 <TitleMenu>Price</TitleMenu>
                 <Dropdown>
+                    <DropdownSvg width={20} height={20} >
+                        <use href={`${sprite}#icon-chevron-down`}  />
+                    </DropdownSvg>
                     <DropdownButton width="124px" >{selectedPrices + " $" }</DropdownButton>                    
                     <DropdownList>
                         {levelPrices.sort((a, b) => a - b).map((price, index) => (

@@ -67,5 +67,8 @@
 <symbol id="icon-burger" viewBox="0 0 28 28">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.833 11.667H3.5M24.5 7h-21m21 9.333h-21M19.833 21H3.5"/>
 </symbol>
+<symbol id="icon-chevron-down" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M8 12l8 8 8-8"></path>
+</symbol>
 </defs>
 </svg>
