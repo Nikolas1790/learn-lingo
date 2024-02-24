@@ -49,20 +49,33 @@ export default function FavoritePage() {
       }
     });
   };
-
-  const handleResultsFoundChange = (value) => {
-    setResultsFound(value);
+  
+  const resetTeachers = () => {
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userId = user.uid;
+        const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+        console.log(storedFavorites)
+        setallFavorits(storedFavorites)
+        setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
+        setResultsFound(true)
+      }
+    });
   };
+  console.log(favoriteTeachers)
+
     return (   
       <WraperBox>
         <FavoritePageContainer>
-            <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} />
+            <FilterMenu setTeachers={setTeachers} onResultsFoundChange={(e) => setResultsFound(e)} onReset={resetTeachers} />
             {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
 
             { !favoriteTeachers.length && <EmptyFavoritesList /> }
 
             <ul>
               {favoriteTeachers.map((teacher, index) => {
+                console.log(teachers)
                 const isTeacherInList = teachers.some(t => t.avatar_url === teacher.avatar_url);  
                   if (teachers.length === 0 || isTeacherInList) {
                     return <TeacherCard key={index} teacher={teacher} handleFavorite={handleFavorite} sourceComponent="FavoritePage" />;
@@ -72,7 +85,7 @@ export default function FavoritePage() {
             </ul>
 
             {favoriteTeachers.length < visibleTeachers  || allFavorits.length === visibleTeachers ? null : (
-               <BtnLoadMore  handleLoadMore={handleLoadMore} />
+              resultsFound ?  <BtnLoadMore  handleLoadMore={handleLoadMore} /> : null
             )}
         </FavoritePageContainer> 
       </WraperBox>      

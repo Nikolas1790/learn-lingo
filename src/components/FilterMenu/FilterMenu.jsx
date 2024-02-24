@@ -4,7 +4,7 @@ import { getDatabase, ref, get } from 'firebase/database';
 import { toast } from "react-toastify";
 import sprite from '../../img/svg-file.svg';
 
-export default function FilterMenu({setTeachers, onResultsFoundChange}) {
+export default function FilterMenu({setTeachers, onResultsFoundChange, onReset}) {
     const [selectedLanguage, setSelectedLanguage] = useState("");
     const [selectedLevels, setSelectedLevels] = useState("");
     const [selectedPrices, setSelectedPrices] = useState("");
@@ -38,10 +38,17 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
                         const filterByPrice = selectedPrices ? teacher.price_per_hour === selectedPrices : true;
                         
                         return filterByLanguage && filterByLevel && filterByPrice;
+                        
                     });
-                    onResultsFoundChange(filteredTeachers.length > 0);
-                    setTeachers(filteredTeachers);
+                    
+                    if(teachersArray.length > filteredTeachers.length){
+                        onResultsFoundChange(false);
+                        setTeachers(filteredTeachers);
+                    }
+  console.log("resultsFound")
+
                 } else {
+                    // console.log("resultsFound")
                     onResultsFoundChange(false);
                     toast.error("No data available")
                 }
@@ -50,7 +57,8 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
             }
         };  
         fetchData();
-    }, [db, selectedLanguage, selectedLevels, selectedPrices,  setTeachers, onResultsFoundChange]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps        
+    }, [db, selectedLanguage, selectedLevels, selectedPrices,  setTeachers]);
 
     const handleMenuChange = (value, setValue) => {
         setValue(value);
@@ -60,6 +68,7 @@ export default function FilterMenu({setTeachers, onResultsFoundChange}) {
         setSelectedLanguage("");
         setSelectedLevels("");
         setSelectedPrices("");
+        onReset();
     };
 
     return (   

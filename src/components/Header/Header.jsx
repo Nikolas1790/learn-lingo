@@ -20,10 +20,6 @@ export default function Header() {
         setRegisterModalOpen(false);
     };
 
-    const openRegisterModal = () => {
-        setRegisterModalOpen(true);
-    };
-
     return (
         <HeaderContainer >
             <Logo />
@@ -36,7 +32,7 @@ export default function Header() {
 
             { loading ? null : authUser ?
             <LogOutBlock /> :
-            <LogInBlock openLoginModal={openLoginModal} openRegisterModal={openRegisterModal}/>}
+            <LogInBlock openLoginModal={openLoginModal} openRegisterModal={() => setRegisterModalOpen(true)}/>}
 
             <MobileMenuComponent />
 

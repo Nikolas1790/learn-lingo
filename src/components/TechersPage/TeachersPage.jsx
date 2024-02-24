@@ -59,10 +59,30 @@ export default function TeachersPage() {
     setResultsFound(value);
   };
 
+
+  const resetTeachers =  async () => {
+    setResultsFound(true)
+    try {         
+      const teachersRef = ref(db, 'teachers');
+      const snapshot = await get(teachersRef);
+      
+      if (snapshot.exists()) {
+        const teachersData = snapshot.val();
+        const teachersArray = Object.values(teachersData);
+        setTeachers(teachersArray.slice(0, visibleTeachers));
+      } else {
+        toast.error("No data available")
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+    setVisibleTeachers(4)
+  };
+  console.log(resultsFound)
   return (   
     <WraperBox>
       <TeachersPageContainer>            
-          <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} />
+          <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} onReset={resetTeachers} />
           {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
           {!teachers.length && resultsFound && (
             <LoaderConteiner>
@@ -75,8 +95,8 @@ export default function TeachersPage() {
               <TeacherCard key={index} teacher={teacher}  />
             ))}
           </ul>
-          {teachers.length < visibleTeachers ? null : (
-             <BtnLoadMore  handleLoadMore={handleLoadMore} />
+          {teachers.length < visibleTeachers  ? null : (
+             resultsFound ? <BtnLoadMore  handleLoadMore={handleLoadMore} /> : null
           )}
       </TeachersPageContainer> 
     </WraperBox>      
