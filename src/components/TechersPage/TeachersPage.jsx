@@ -1,14 +1,16 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
-import {  TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
+import {  LoaderConteiner, NotFound, TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
 import TeacherCard from "components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
 import { getDatabase, ref, get } from 'firebase/database';
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 import { toast } from "react-toastify";
+import Loader from "components/Loader/Loader";
 
 export default function TeachersPage() {
   const [teachers, setTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
+  const [resultsFound, setResultsFound] = useState(true);
   const db = getDatabase();
 
   useEffect(() => {
@@ -53,10 +55,21 @@ export default function TeachersPage() {
     }
   };
 
+  const handleResultsFoundChange = (value) => {
+    setResultsFound(value);
+  };
+
   return (   
     <WraperBox>
       <TeachersPageContainer>            
-          <FilterMenu setTeachers={setTeachers} />
+          <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} />
+          {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
+          {!teachers.length && resultsFound && (
+            <LoaderConteiner>
+              <Loader />
+            </LoaderConteiner>
+          ) }
+          
           <ul>
             {teachers.map((teacher, index) => (
               <TeacherCard key={index} teacher={teacher}  />

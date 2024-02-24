@@ -3,7 +3,7 @@ import { Dropdown, DropdownButton, DropdownItem, DropdownList, ResetButton, Titl
 import { getDatabase, ref, get } from 'firebase/database';
 import { toast } from "react-toastify";
 
-export default function FilterMenu({setTeachers}) {
+export default function FilterMenu({setTeachers, onResultsFoundChange}) {
     const [selectedLanguage, setSelectedLanguage] = useState("");
     const [selectedLevels, setSelectedLevels] = useState("");
     const [selectedPrices, setSelectedPrices] = useState("");
@@ -38,9 +38,10 @@ export default function FilterMenu({setTeachers}) {
                         
                         return filterByLanguage && filterByLevel && filterByPrice;
                     });
-
+                    onResultsFoundChange(filteredTeachers.length > 0);
                     setTeachers(filteredTeachers);
                 } else {
+                    onResultsFoundChange(false);
                     toast.error("No data available")
                 }
             } catch (error) {
@@ -48,7 +49,7 @@ export default function FilterMenu({setTeachers}) {
             }
         };  
         fetchData();
-    }, [db, selectedLanguage, selectedLevels, selectedPrices,  setTeachers]);
+    }, [db, selectedLanguage, selectedLevels, selectedPrices,  setTeachers, onResultsFoundChange]);
 
     const handleMenuChange = (value, setValue) => {
         setValue(value);

@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 import EmptyFavoritesList from "components/EmptyFavoritesList/EmptyFavoritesList";
+import { NotFound } from "components/TechersPage/TeachersPage.styled";
 
 export default function FavoritePage() {
   const [teachers, setTeachers] = useState([]);
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [allFavorits, setallFavorits] = useState([]);
+  const [resultsFound, setResultsFound] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -47,11 +49,16 @@ export default function FavoritePage() {
       }
     });
   };
+
+  const handleResultsFoundChange = (value) => {
+    setResultsFound(value);
+  };
     return (   
       <WraperBox>
         <FavoritePageContainer>
-            <FilterMenu setTeachers={setTeachers} />
-            
+            <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} />
+            {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
+
             { !favoriteTeachers.length && <EmptyFavoritesList /> }
 
             <ul>

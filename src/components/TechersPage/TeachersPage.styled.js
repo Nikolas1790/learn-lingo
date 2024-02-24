@@ -37,3 +37,12 @@ export const EmailErrorMessage = styled.div`
   margin-top: -20px  ; 
   padding:  5px 10px 10px;
 `;
+
+export const LoaderConteiner = styled.div`
+  margin: 0 auto;
+`;
+
+export const NotFound = styled.p`
+font-size: 20px;
+  margin:  40px auto 0 auto;
+`;
