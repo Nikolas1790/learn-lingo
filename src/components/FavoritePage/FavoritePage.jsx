@@ -7,9 +7,9 @@ import { onAuthStateChanged } from "firebase/auth";
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 import EmptyFavoritesList from "components/EmptyFavoritesList/EmptyFavoritesList";
 import { NotFound } from "components/TechersPage/TeachersPage.styled";
+import { isEqual } from "lodash";
 
 export default function FavoritePage() {
-  const [teachers, setTeachers] = useState([]);
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [allFavorits, setallFavorits] = useState([]);
@@ -27,7 +27,6 @@ export default function FavoritePage() {
   
     return () => unsubscribe(); 
   }, [visibleTeachers]);
-
 
   const handleLoadMore = () => {
     const userId = auth.currentUser?.uid;
@@ -50,37 +49,41 @@ export default function FavoritePage() {
     });
   };
   
-  const resetTeachers = () => {
-    
+  const resetTeachers = () => {    
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const userId = user.uid;
         const storedFavorites = JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-        console.log(storedFavorites)
+         
         setallFavorits(storedFavorites)
         setFavoriteTeachers(storedFavorites.slice(0, visibleTeachers));
         setResultsFound(true)
       }
     });
   };
-  console.log(favoriteTeachers)
+  
+  const handlerSetTeachers = (e) => {
+    const isTeacherInList = allFavorits.filter(favoriteTeacher => (
+      e.some(selectedTeacher => isEqual(selectedTeacher, favoriteTeacher))
+    ));
+
+    if (!isEqual(favoriteTeachers, isTeacherInList)) {
+      setFavoriteTeachers(isTeacherInList);
+    }
+  };
+
 
     return (   
       <WraperBox>
         <FavoritePageContainer>
-            <FilterMenu setTeachers={setTeachers} onResultsFoundChange={(e) => setResultsFound(e)} onReset={resetTeachers} />
-            {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
+            <FilterMenu setTeachers={handlerSetTeachers} onResultsFoundChange={(e) => setResultsFound(e)} onReset={resetTeachers} />
+            {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
 
-            { !favoriteTeachers.length && <EmptyFavoritesList /> }
+            { !favoriteTeachers.length && resultsFound &&  <EmptyFavoritesList /> }
 
             <ul>
               {favoriteTeachers.map((teacher, index) => {
-                console.log(teachers)
-                const isTeacherInList = teachers.some(t => t.avatar_url === teacher.avatar_url);  
-                  if (teachers.length === 0 || isTeacherInList) {
                     return <TeacherCard key={index} teacher={teacher} handleFavorite={handleFavorite} sourceComponent="FavoritePage" />;
-                  }        
-                return null;
               })}
             </ul>
 

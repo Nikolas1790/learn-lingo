@@ -45,11 +45,8 @@ export default function FilterMenu({setTeachers, onResultsFoundChange, onReset})
                         onResultsFoundChange(false);
                         setTeachers(filteredTeachers);
                     }
-  console.log("resultsFound")
 
                 } else {
-                    // console.log("resultsFound")
-                    onResultsFoundChange(false);
                     toast.error("No data available")
                 }
             } catch (error) {

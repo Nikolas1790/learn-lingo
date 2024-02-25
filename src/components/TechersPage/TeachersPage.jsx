@@ -78,12 +78,12 @@ export default function TeachersPage() {
     }
     setVisibleTeachers(4)
   };
-  console.log(resultsFound)
+   
   return (   
     <WraperBox>
       <TeachersPageContainer>            
           <FilterMenu setTeachers={setTeachers} onResultsFoundChange={handleResultsFoundChange} onReset={resetTeachers} />
-          {!resultsFound && <NotFound>Information for your request was not found :(</NotFound>}
+          {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
           {!teachers.length && resultsFound && (
             <LoaderConteiner>
               <Loader />
@@ -102,4 +102,3 @@ export default function TeachersPage() {
     </WraperBox>      
   );
 }
-  

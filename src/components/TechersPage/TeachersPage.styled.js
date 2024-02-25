@@ -44,5 +44,5 @@ export const LoaderConteiner = styled.div`
 
 export const NotFound = styled.p`
 font-size: 20px;
-  margin:  40px auto 0 auto;
+  margin:  40px auto ;
 `;
