@@ -53,7 +53,7 @@ export default function TeacherCard({teacher, handleFavorite, sourceComponent })
       toast.error("To add to favorites you must be logged in.")
     }
   };
-
+  console.log("TeacherCard rendering", teacher.name);
   return (   
     <WraperCard>
       <CardHeartBtn onClick={handleHeartClick} >

@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 export const WraperCard = styled.li`
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
+    display: flex;    
     margin-bottom: 32px;
     border-radius: 24px;
     background: ${color.whitePrimary};
     width: 1184px;
     @media (max-width: 1216px) {
        width: auto;
+       flex-wrap: wrap;
     };
 `
 export const CardHeartBtn = styled.button`

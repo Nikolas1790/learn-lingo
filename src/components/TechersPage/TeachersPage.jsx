@@ -1,7 +1,7 @@
 import FilterMenu from "components/FilterMenu/FilterMenu";
 import {  LoaderConteiner, NotFound, TeachersPageContainer, WraperBox } from "./TeachersPage.styled";
 import TeacherCard from "components/TeacherCard/TeacherCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getDatabase, ref, get } from 'firebase/database';
 import BtnLoadMore from "components/BtnLoadMore/BtnLoadMore";
 import { toast } from "react-toastify";
@@ -79,6 +79,8 @@ export default function TeachersPage() {
     setVisibleTeachers(4)
   };
    
+  const memoizedTeachers = useMemo(() => teachers, [teachers]);
+
   return (   
     <WraperBox>
       <TeachersPageContainer>            
@@ -91,7 +93,7 @@ export default function TeachersPage() {
           ) }
           
           <ul>
-            {teachers.map((teacher, index) => (
+            { memoizedTeachers.map((teacher, index) => (
               <TeacherCard key={index} teacher={teacher}  />
             ))}
           </ul>
