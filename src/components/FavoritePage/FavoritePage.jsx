@@ -72,7 +72,6 @@ export default function FavoritePage() {
     }
   };
 
-
     return (   
       <WraperBox>
         <FavoritePageContainer>
