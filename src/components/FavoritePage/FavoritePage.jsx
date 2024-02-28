@@ -72,8 +72,7 @@ export default function FavoritePage() {
       <WraperBox>
         <FavoritePageContainer>
             <FilterMenu setTeachers={handlerSetTeachers} onResultsFoundChange={(e) => setResultsFound(e)} onReset={resetTeachers} />
-            {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
-
+            
             { !favoriteTeachers.length && resultsFound &&  <EmptyFavoritesList /> }
 
             <ul>
@@ -81,6 +80,8 @@ export default function FavoritePage() {
                     return <TeacherCard key={index} teacher={teacher} handleFavorite={handleFavorite} sourceComponent="FavoritePage" />;
               })}
             </ul>
+
+            {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
 
             {favoriteTeachers.length < visibleTeachers  || allFavorits.length === visibleTeachers ? null : (
               resultsFound ?  <BtnLoadMore  handleLoadMore={handleLoadMore} /> : null

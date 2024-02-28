@@ -53,7 +53,7 @@ export default function TeachersPage() {
     <WraperBox>
     <TeachersPageContainer>            
         <FilterMenu setTeachers={setAllTeachers} onResultsFoundChange={handleResultsFoundChange} onReset={resetTeachers} />
-        {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
+        
         {!visibleTeachersList.length && resultsFound && (
           <LoaderConteiner>
             <Loader />
@@ -65,6 +65,8 @@ export default function TeachersPage() {
             <TeacherCard key={teacher.avatar_url} teacher={teacher}  />
           ))}
         </ul>
+
+        {!resultsFound && <NotFound>This is all we managed to find</NotFound>}
         
         {visibleTeachersList.length < visibleTeachers  ? null : (
            resultsFound ? <BtnLoadMore  handleLoadMore={handleLoadMore} /> : null
