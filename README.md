@@ -61,6 +61,9 @@ Performance criteria
 - The repository should have a README.md with a description of the project: what this project is about, the main technologies, layout, TK.
 - The project is deployed on github pages, netlify.com or other third-party hosting.
 
+Technical task: [https://docs.google.com/document/d/1ZB_MFgnnJj7t7OXtv5hESSwY6xRgVoACZKzgZczWc3Y/edit](https://docs.google.com/document/d/1ZB_MFgnnJj7t7OXtv5hESSwY6xRgVoACZKzgZczWc3Y/edit)
+
+Layout: [https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/Learn-Lingo?type=design&node-id=0-1&mode=design&t=ogSVq4kI4tiDE9rh-0](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/Learn-Lingo?type=design&node-id=0-1&mode=design&t=ogSVq4kI4tiDE9rh-0)
 
 
 For any inquiries or assistance, please contact us at [ovsyannikovnikolai1790@gmail.com](ovsyannikovnikolai1790@gmail.com).
